@@ -1,0 +1,40 @@
+(Very short) installation instructions for the Green Couriers Pylons App.
+=========================================================================
+
+#first, get your db created. so far written & tested only with postgres
+
+$ echo 'create database greencouriers' | sudo -upostgres psql template1
+$ echo "create user greencouriers password 'gcpw'" | sudo -upostgres psql template1
+$ echo "grant all on database greencouriers to greencouriers" | sudo -upostgres psql template1
+
+#next, put an .ini file in place. can use development.sample.ini to start from
+
+#and then we can populate the db:
+
+$ paster setup-app development.ini
+
+#insert country data into the countries table
+
+$ psql -hlocalhost -Ugreencouriers greencouriers
+# \i countries.data.sql
+
+#get the required python libs
+
+$ easy_install Pylons SQLAlchemy Shapely psycopg2 ToscaWidgets pygeoip
+
+#get maxmind's geoip lite db into the root folder of the app:
+
+$ wget 'http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz' && gzip -d GeoIP.dat.gz
+
+
+#python facebook sdk:
+
+$ git clone 'https://github.com/sciyoshi/pyfacebook.git' && cd pyfacebook
+
+# at this point, two fixes need to be made. one is to rename redirect_to to redirect in wsgi.py to enable proper Pylons middleware support, the other is removing django.conf import in __init__.py which has no relevance to Pylons. the two are likely bugs. once these are solved, one can safely
+
+$ python setup.py install
+
+
+
+

@@ -1,0 +1,14 @@
+Green Couriers is a location & schedule based index whose purpose is to connect between businesses that require local deliveries and bicycle couriers in the area.
+
+The application was developed to primarily fill the function of a bicycle courier index in Tel-Aviv, where it uses the local Waze map tile layer for OpenLayers. However, through its usage of OpenLayers & Google Maps API it can be easily adapted for deployment elsewhere.
+
+
+Language packs currently included are Hebrew and a rough English translation.
+
+The datastore is PostgreSQL and the software is intended for small, city-size deployments.
+
+It has been written for & tested with Pylons 1.0, SQLAlchemy 0.5-0.6 & Python 2.5-2.6
+
+Rough installation instructions can be found in the INSTALL file.
+
+Enjoy!

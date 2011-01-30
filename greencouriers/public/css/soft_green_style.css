@@ -1,0 +1,162 @@
+body {
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0;
+	background-color:#182801;
+}
+
+.conteneur {
+	margin-top: 10px;
+	position: absolute;
+	width: 740px;
+	right: 50%;
+	margin-right: -370px;
+	border:0px solid #182801;
+	color: #182801;
+	background-color:#7A9431;
+}
+
+
+.header {
+    /*background-image: url("/images/top-logo2.png");*/
+    background-image:url("/images/logo-new2.png");
+	background-repeat: no-repeat;
+	height:130px;
+	padding-right:50px;
+	padding-top:40px;
+	max-width:490px;
+	/*border-bottom:1px solid #182801;*/
+	color: #F5F8EF;
+}
+
+.menu {
+	float:left;
+	margin: 0px;
+	padding:0px;
+	margin-right:20px;
+	border-right:1px solid #182801;
+}
+
+
+* html .menu {
+	margin-right: -3px;
+}
+
+.centre {
+	padding:20px;
+	padding-right:40px;
+}
+
+.pied {
+	height: 25px;
+	text-align:left;
+	padding-left:10px;
+}
+
+.menu-list {
+	list-style-type: none;
+	margin:0px 0px 0px 0px;
+	padding:0px;
+}
+
+* html .menu li{
+	margin-bottom:-3px;
+}
+
+.menu li {
+	margin:0px;
+	border-bottom:1px solid #182801;
+	color: #D9CEB8;
+	font-size: 1.1em;
+	text-decoration: none;
+	background-color:#748F02;
+	padding:0px;
+	width:199px;
+}
+
+
+
+.menu li a {
+	margin:0px;
+	display: block;
+	color: #F5F8EF;
+	font-size: 1.1em;
+	text-decoration: none;
+	border-right:5px solid #F5F8EF;
+	padding:5px;
+}
+
+.menu li a:hover {
+	text-decoration: none;
+	background-color:#90A000;
+}
+
+.whity {
+background-color:white !important;
+}
+.whity a:hover {
+background-color:white !important;
+}
+.p{
+	
+}
+
+h2{
+	margin-right:-20px;
+	margin-top:15px;
+	padding-right:5px;
+	font-size: 1.3em;
+	color: #F5F8EF;
+	font-weight:normal;
+}
+
+h1{
+	margin-right:-30px;
+	margin-top:5px;
+	padding-right:5px;
+	font-size: 1.6em;
+	color: #F5F8EF;
+	font-weight:normal;
+}
+
+.header-title {
+	font-size:2.3em;
+	border-top:2px solid #F5F8EF;
+	font-style:italic;
+}
+
+.header-title-two {
+	font-size:1.1em;
+	padding-bottom:3px;
+	border-bottom:1px solid #F5F8EF;
+}
+
+a{
+	color:#F5F8EF;
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+blockquote{
+	background-color:rgb(142, 168, 69);
+	padding : 3px;
+	border-right:2px solid #F5F8EF;
+}
+
+
+.FB_Link {
+	color:white !important;
+
+}
+
+.largetext { 
+    font-size:1.8em;
+}
+
+.freemap {
+background-color:white;
+}

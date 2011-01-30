@@ -1,0 +1,203 @@
+# -*- coding: utf-8 -*-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>${self.title()}</title>
+    ${self.js_includes()}
+    ${self.extra_script()}
+<link rel="stylesheet" href="/css/autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="/css/accordion.css" type="text/css" media="screen" charset="utf-8" />
+<style type='text/css'>
+  .error-message { color:red;  }
+</style>
+  </head>
+    <body dir=${self.directionality()}>
+    ${self.main_content()}
+  </body>
+</html>
+<%def name="extra_script()"></%def>
+<%def name="location_picker(id,start_marking_area=False,start_marking_marker=False,class_name='freemap',feature_added_cb=None,obj_global=True,existing_area=None,existing_marker=None,city_search=False,street_search=False,markers_layer=False,width=500,height=300,style=None,center_on_marker=False)">
+<% 
+if style: 
+ styleexp="styles['%s']"%style
+else: 
+ styleexp='null'
+%>
+    <div class="${class_name}" dir=ltr style='width:${width}px;height:${height}px' id="${id}"></div>
+<script type='text/javascript'>
+    var styles={business:{fillColor:'red',fillOpacity:0.2}
+		,courier:{fillColor:'green',fillOpacity:0.2}}
+
+    % if obj_global:
+var ${id};
+% endif
+
+function ${id}_pan_to_vectors()
+{
+    //this code makes the map contain the whole joovce
+    var ve = ${id}.vectors.getDataExtent();
+    ${id}.map.setCenter(ve.getCenterLonLat());
+    //alert('extent:'+${id}.map.getExtent());    alert('vector bounds:'+ve);
+    var panned=0;
+    while (${id}.map.getExtent().containsBounds(ve,false))
+    {
+	var mapzoom = ${id}.map.getZoom() + 1;
+	${id}.map.setCenter(ve.getCenterLonLat(),mapzoom);
+	panned++; if (panned>15) return;
+    }
+    while (!${id}.map.getExtent().containsBounds(ve,false))
+    {
+	var mapzoom = ${id}.map.getZoom() - 1;
+	//alert('rezooming to '+mapzoom);
+	${id}.map.setCenter(ve.getCenterLonLat(),mapzoom);
+	panned++; if (panned>15) return;
+    }
+}
+
+Event.observe(window,'load',function() {
+	% if not obj_global:
+    var\
+    % endif
+    ${id} = createEmbeddedMap($("${id}"));
+
+% if existing_area:
+    // existing area ${existing_area}
+    <% import string %>
+	var points=[${string.join([('new OpenLayers.Geometry.Point(%f,%f)'%(p.pos_lon,p.pos_lat)) for p in existing_area.points],",")}];
+    ${id}.feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Polygon(new OpenLayers.Geometry.LinearRing(points)),null,${styleexp|n}); 
+    ${id}.vectors.addFeatures([${id}.feature]);	
+
+    ${id}_pan_to_vectors();
+
+    % endif
+
+    ${id}.polyctl = new OpenLayers.Control.DrawFeature(${id}.vectors,OpenLayers.Handler.Polygon);
+    ${id}.polyctl.handler.style=${styleexp};
+    ${id}.map.addControl(${id}.polyctl);
+
+    % if feature_added_cb:
+    ${id}.polyctl.featureAdded = ${feature_added_cb}
+    % endif
+
+	% if existing_marker or markers_layer:
+    ${id}.markers = new OpenLayers.Layer.Markers("Marker");
+    ${id}.map.addLayer(${id}.markers);
+    % endif
+
+	% if existing_marker:
+    var icon = new OpenLayers.Icon('/js/img/marker-blue.png'); //size,offset
+    ${id}.marker = new OpenLayers.Marker(new OpenLayers.LonLat(${existing_marker.points[0].pos_lon},${existing_marker.points[0].pos_lat}),icon)
+    ${id}.markers.addMarker(${id}.marker);    
+	% if center_on_marker:
+    ${id}.map.setCenter(new OpenLayers.LonLat(${existing_marker.points[0].pos_lon}, ${existing_marker.points[0].pos_lat}), 7);    
+    % endif
+% endif
+
+% if start_marking_area:
+
+    ${id}.polyctl.activate();
+% endif
+
+});
+</script>
+% if city_search:
+עיר - ${h.text('city',id='city',dir='rtl')}
+% endif
+% if street_search:
+רחוב - ${h.text('street',id='street')}
+% endif
+% if city_search or street_search:
+${h.submit('center_map',u'מרכז מפה',id='center_map')}
+<br />
+<script type='text/javascript'>
+    function center_map()
+{
+	if ($('city')) var city = $('city').value;
+	if ($('street')) var street = $('street').value;
+	if (street)
+	{
+	    var url = "${url.current(action='search_street',city_name='CITY',street_name='STREET')}".replace('CITY',city).replace('STREET',street)
+	    var zoom=safeArgs.zoom+6
+	}
+	else
+	{
+	    var url = "${url.current(action='search_city',city_name='CITY')}".replace('CITY',city);
+	    var zoom=safeArgs.zoom+4
+	}
+	var r = new Ajax.Request(url,{onSuccess:function(t) {
+	    var resp = t.responseText.evalJSON();
+	    if (resp.successful)
+	    {
+		//alert('centering map on '+resp.result.center.lon+','+resp.result.center.lat);
+		${id}.map.setCenter(new OpenLayers.LonLat(resp.result.center.lon, resp.result.center.lat), zoom);
+	    }}});
+}
+Event.observe(window,'load',function() { 
+    $('center_map').observe('click',function(e) {
+	Event.stop(e);
+
+	center_map();
+
+    });
+
+				     
+% if city_search:
+function city_script(inp) 
+			    {			    
+	var rt =  "${url.current(action='city_autocomplete',city_name='TOKEN')}";
+	rt =  rt.replace('TOKEN',inp);
+	return rt
+    }
+var city_options = {
+    script:city_script,
+    json:true,
+    shownoresults:true,
+    maxresults:16
+}
+
+
+	      var json=new AutoComplete('city',city_options);
+% endif
+% if street_search:
+    $('city').observe('change',function() {
+	$('street').value='';
+    });
+    $('city').observe('blur',function() {
+	if ($('city').value) center_map();
+    });
+    $('street').observe('blur',function() {
+	if ($('city').value && $('street').value) center_map();
+    });
+function street_script(inp) 
+        {
+	    var rt = "${url.current(action='street_autocomplete',city_name='CITY',street_name='STREET')}";
+	    rt = rt.replace('CITY',$('city').value);
+	    rt = rt.replace('STREET',$('street').value);
+	    return rt;
+	}
+    var street_options = {
+	script:street_script,
+	json:true,
+	shownoresults:true,
+	maxresults:16
+    }
+    var json2=new AutoComplete('street',street_options);
+% endif
+	     });
+</script>
+% endif
+</%def>
+<%def name="js_includes()">
+    <script type='text/javascript' src='/js/prototype.js'></script>
+    <script type='text/javascript' src='/js/sc/effects.js'></script>
+    <script type='text/javascript' src='/js/accordion.js'></script>
+    <%doc><script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script></%doc>
+    <script type='text/javascript' src='/js/OpenLayers.js'></script>
+    <script type="text/javascript" src="http://www.waze.co.il/js/he.js"></script>
+    <script type='text/javascript' src='/js/freemap-test.js'></script>
+    <script type='text/javascript' src='/js/autocomplete.js'></script>
+</%def>
+    <%def name="directionality()">rtl</%def>
+    

@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>testicle</title>
+<script type='text/javascript' src='http://dev.openlayers.org./nightly/OpenLayers.js'></script>
+<script type='text/javascript' src='/js/he.js'></script>
+<script type='text/javascript' src='/js/prototype.js'></script>
+<script type='text/javascript' src='/js/freemap-test.js'></script>
+<script type='text/javascript'>
+
+Event.observe(window,'load',function() {
+    var m = createEmbeddedMap($('map'));
+    polyctl = new OpenLayers.Control.DrawFeature(m.vectors,OpenLayers.Handler.Polygon);
+    m.map.addControl(polyctl);
+    polyctl.featureAdded=function(a) { 	    if ($('poly_data')) $('poly_data').value = a.geometry.components[0].getComponentsString();	    a.destroy();	}
+    polyctl.activate();    
+});
+</script>
+</head>
+<body dir=rtl>
+<div dir=ltr style='width:500px;height:300px' id='map'></div>
+</body>
+</html>

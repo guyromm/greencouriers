@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/main.html" />
+<%def name="title()">${_(u'השליחים הירוקים')}</%def>
+<%def name="main_content()">
+    % if c.animation:
+<script type='text/javascript'>
+  //$('logo').style.left='500px';
+  $('logo').hide();
+  Event.observe(window,'load',function() {
+  //new Effect.Move($('logo'),{x:-500,y:0,mode:'relative'});
+  new Effect.Grow($('logo'));
+
+  });
+</script>
+% endif
+<div class='main'>
+<p id='text_to_hide'>
+<span>${_(u'Greenie הינה יוזמה חברתית - אקולוגית הבאה לבצע מהפכה בתחום הלוגיסטיקה הזעירה והמשלוחים.')}</span><br />
+<span>${_(u'Greenie מאפשר לבעלי עסקים ושליחים לאתר זה את זה ע&quot;פ מיקום גיאוגרפי ושעות פעילות. על מנת להשתתף,')} </span><br />
+<span>${_(u'כל שעליכם לעשות הוא להזין את פרטיכם - בין אם אתם בית עסק המעוניין בשירות משלוחים זול, יעיל וירוק, או בעליהם של זוג אופניים המעוניינים בהכנסה נוספת.')}</span><br />
+</p>
+% if _('lang')=='he':
+<script type='text/javascript'>
+  $('text_to_hide').style.display='none';
+</script>
+<img src='/shachar/explanation.jpg' alt="${_(u'הסבר אודות השליחים הירוקים')}" style='margin-bottom:20px'/>
+% endif
+<ol class='vlargetext' id='explanation'>
+  <li><span class='circle'>1</span> 
+    <span class='explanation'>${_(u'רישום מהיר למערכת באמצעות פייסבוק')}
+  </span></li>
+  <li><span class='circle'>2</span> 
+    <span class='explanation'>${_(u'סמן את האיזור והשעות שלך')}</span>
+  </li>
+  <li><span class='circle'>3</span> 
+    <span class='explanation'>${_(u'קבל עדכונים על עסקים/רוכבים שעובדים באותו איזור')}
+  </span></li>
+  <li><span class='circle'>4</span> 
+    <span class='explanation'>${_(u'הזמן/בצע את השליחות')}</span>
+  </li>
+</ol>
+% if _('lang')=='he':
+<script type='text/javascript'>
+$('explanation').hide();
+</script>
+<img src='/shachar/how.does.it.work.jpg' alt="${_(u'איך זה עובד?')}" />
+% endif
+
+
+<div class='lead-on'>
+<%doc><a id='new_courier' href="${url.current(controller='courier_signup')}">${_(u'שליח חדש')}</a>
+<a id='new_business' href="${url.current(controller='business_signup')}">${_(u'עסק חדש')}</a>
+<h2><a class='arrow dark repl' href="${url.current(controller='client_signup')}">${_(u'לקוח חדש')}</a></h2></%doc>
+
+<div class='path-link first'>
+<a id="new_courier" href="${url.current(controller='courier_signup')}">${_(u'שליח')}</a>
+<p>${_(u'הרשם כשליח, וקבל את רשימת העסקים הירוקים באיזורך עמם באפשרותך לעבוד')}</p>
+</div>
+
+<div  class='path-link second'>
+<a id='new_business' href="${url.current(controller='business_signup')}">${_(u'עסק')}</a>
+<p><b>${_(u'שים את העסק שלך על המפה!')}</b> ${_(u'ציין מיקום, שעות, תפריט שירותים ואפשר ללקוחות ושליחים לעבוד מולך')}</p>
+</div>
+
+<div  class='path-link third'>
+<a id='new_client' href="${url.current(controller='client_signup')}">${_(u'לקוח פרטי')}</a>
+<p>${_(u'כלקוח, באפשרותך לראות מי העסקים והשליחים הירוקים שפועלים בקרבתך ולהשתמש בשירותיהם')}</p>
+</div>
+
+</script>
+</div>
+<%doc>
+<h2><a class='arrow dark' href="${url.current(controller='business_signup')}">${_(u'עסק חדש')}</a></h2>
+</div>
+
+<script type='text/javascript'>
+$$('.lead-on h2').each(function (el) {
+el.observe('mouseover',function(ev) {
+if (el.shaken) return;
+el.shaken=true;
+new Effect.Shake(el,{duration:0.5,distance:10});
+});
+});
+</script></%doc>
+
+</div>
+
+<%doc><div class='left-column'>
+<div style='margin-bottom:10px'>
+<a class='inline-button' style='float:left' href="${url.current(action='businesses_map')}"><span>${_(u'מפת עסקים')}</span></a>
+<a class='inline-button' style='float:right' href="${url.current(action='couriers_map')}"><span>${_(u'מפת שליחים')}</span></a>&nbsp;
+</div>
+
+<h3>${_(u'הרשמות אחרונות')}</h3>
+<ul>
+% for a in c.activities:
+<li>
+<small style='float:left;margin-top:4px;'><a class='inline-button' href="${url.current(controller=a.activity_type,action='index',id=a.id)}"><em>${_(u'לצפייה')}</em></a></small>
+${a}
+
+</li>
+% endfor
+</ul>
+</div></%doc>
+</%def>

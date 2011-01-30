@@ -1,0 +1,19 @@
+<%inherit file="main.html" />
+<%def name="title()">${_('About us')}</%def>
+<%def name="main_content()">
+<div class='main'>
+<h2>${_('Contact us form')}</h2>
+<p>${c.message}</p>
+${h.form(url.current(controller='main',action='contact_submit'))}
+<fieldset>
+% if not c.user or not c.user.login_hash:
+<div><label for='name'>${_('Name')}</label>${h.text('name')}</div>
+<div><label for='reply_address'>${_('Reply address')}</label>${h.text('reply_address')}</div>
+% endif
+<div><label for='subject'>${_('Subject')}</label>${h.text('subject')}</div>
+<div><label for='message'>${_('Message')}</label>${h.textarea('message')}</div>
+<input type='submit' value="${_('Send')}" />
+</fieldset>
+${h.end_form()}
+</div>
+</%def>

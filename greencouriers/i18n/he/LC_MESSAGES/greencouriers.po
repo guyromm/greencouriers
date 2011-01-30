@@ -1,0 +1,2074 @@
+# Hebrew translations for greencouriers.
+# Copyright (C) 2009 ORGANIZATION
+# This file is distributed under the same license as the greencouriers
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: greencouriers 0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2009-05-09 21:32+0300\n"
+"PO-Revision-Date: 2009-05-29 20:50+0300\n"
+"Last-Translator: Guy Romm <guyromm@gmail.com>\n"
+"Language-Team: he <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 0.9.4\n"
+
+#: greencouriers/controllers/business.py:37
+msgid "כבר נתת ציון לשירות זה."
+msgstr "כבר נתת ציון לשירות זה."
+
+#: greencouriers/controllers/business.py:69
+msgid "רשימת עסקים הזקוקים לשליח באיזור שלך"
+msgstr "רשימת עסקים הזקוקים לשליח באיזור שלך"
+
+#: greencouriers/controllers/business.py:77
+#, python-format
+msgid "התאמות שירות ל%s"
+msgstr "התאמות שירות ל%s"
+
+#: greencouriers/controllers/business.py:95
+#: greencouriers/templates/main-intro.html:61
+msgid "עסק"
+msgstr "עסק"
+
+#: greencouriers/controllers/business.py:95
+#: greencouriers/templates/main-intro.html:56
+msgid "שליח"
+msgstr "שליח"
+
+#: greencouriers/controllers/business.py:95
+msgid "לקוח"
+msgstr "לקוח"
+
+#: greencouriers/controllers/business.py:118
+#, python-format
+msgid ""
+"רשם שירות באתר <a href=\"http://www.greenie.co.il/\">השליחים הירוקים</a> "
+"וישנה התאמה ביניכם - <a href=\"http://www.greenie.co.il%s\">%s</a>"
+msgstr ""
+"רשם שירות באתר <a href=\"http://www.greenie.co.il/\">השליחים הירוקים</a> "
+"וישנה התאמה ביניכם - <a href=\"http://www.greenie.co.il%s\">%s</a>"
+
+#: greencouriers/controllers/business.py:137
+msgid "התאמה חדשה בגריני"
+msgstr "התאמה חדשה בגריני"
+
+#: greencouriers/controllers/business.py:140
+#, python-format
+msgid "התאמה חדשה בגריני - <a href=\"%s\">לצפיה</a>"
+msgstr "התאמה חדשה בגריני - <a href=\"%s\">לצפיה</a>"
+
+#: greencouriers/controllers/business.py:179
+#, python-format
+msgid ""
+" נתן ציון לשירותך באתר <a href=\"http://www.greenie.co.il/\">השליחים "
+"הירוקים</a> - <a href=\"http://www.greenie.co.il%s\">%s</a>"
+msgstr ""
+" נתן ציון לשירותך באתר <a href=\"http://www.greenie.co.il/\">השליחים "
+"הירוקים</a> - <a href=\"http://www.greenie.co.il%s\">%s</a>"
+
+#: greencouriers/controllers/business_signup.py:35
+msgid "לא נמצא מיקום בית עסק"
+msgstr "לא נמצא מיקום בית עסק"
+
+#: greencouriers/controllers/business_signup.py:37
+msgid "בעיית הרשאה במיקום הנבחר!"
+msgstr "בעיית הרשאה במיקום הנבחר!"
+
+#: greencouriers/controllers/business_signup.py:40
+msgid "לא סימנת מקום בית עסק"
+msgstr "לא סימנת מקום בית עסק"
+
+#: greencouriers/controllers/business_signup.py:43
+msgid "לעיתים רחוקות"
+msgstr "לעיתים רחוקות"
+
+#: greencouriers/controllers/business_signup.py:43
+msgid "לעיתים מזדמנות"
+msgstr "לעיתים מזדמנות"
+
+#: greencouriers/controllers/business_signup.py:43
+msgid "לעיתים קרובות"
+msgstr "לעיתים קרובות"
+
+#: greencouriers/controllers/business_signup.py:64
+#: greencouriers/controllers/client_signup.py:36
+#: greencouriers/controllers/signup.py:435
+msgid "תיחום"
+msgstr "תיחום"
+
+#: greencouriers/controllers/business_signup.py:64
+#: greencouriers/controllers/client_signup.py:36
+#: greencouriers/controllers/signup.py:435
+msgid "בית עסק"
+msgstr "בית עסק"
+
+#: greencouriers/controllers/business_signup.py:65
+msgid "הרשמה לבתי עסק"
+msgstr "הרשמה לבתי עסק"
+
+#: greencouriers/controllers/business_signup.py:66
+#: greencouriers/controllers/client_signup.py:38
+#: greencouriers/controllers/signup.py:437
+msgid "הירשם"
+msgstr "הירשם"
+
+#: greencouriers/controllers/client_signup.py:37
+msgid "הרשמה ללקוחות"
+msgstr "הרשמה ללקוחות"
+
+#: greencouriers/controllers/courier_edit.py:26
+msgid "עדכון פרטי פעילות"
+msgstr "עדכון פרטי פעילות"
+
+#: greencouriers/controllers/courier_edit.py:27
+msgid "עדכון"
+msgstr "עדכון"
+
+#: greencouriers/controllers/courier_signup.py:25
+#: greencouriers/templates/courier_signup.html:7
+msgid "הרשמה לשליחים"
+msgstr "הרשמה לשליחים"
+
+#: greencouriers/controllers/main.py:78
+msgid "ההודעה נשלחה בהצלחה!"
+msgstr "ההודעה נשלחה בהצלחה!"
+
+#: greencouriers/controllers/main.py:80
+msgid "ארעה שגיאה בשליחת ההודעה אליך. אנא פנה לתמיכה (guyromm@gmail.com)"
+msgstr "ארעה שגיאה בשליחת ההודעה אליך. אנא פנה לתמיכה (guyromm@gmail.com)"
+
+#: greencouriers/controllers/my_account.py:45
+#: greencouriers/templates/main.html:42 greencouriers/templates/main.html:70
+msgid "עברית"
+msgstr "עברית"
+
+#: greencouriers/controllers/my_account.py:45
+#: greencouriers/templates/main.html:42 greencouriers/templates/main.html:70
+msgid "אנגלית"
+msgstr "אנגלית"
+
+#: greencouriers/controllers/signup.py:48
+#: greencouriers/controllers/signup.py:51
+msgid "תיחום לא חוקי"
+msgstr "תיחום לא חוקי"
+
+#: greencouriers/controllers/signup.py:59
+#, python-format
+msgid "לא נמצא תחיום %d"
+msgstr "לא נמצא תיחום %d"
+
+#: greencouriers/controllers/signup.py:61
+msgid "בעיית הרשאה בתיחום הנבחר!"
+msgstr "בעיית הרשאה במיקום הנבחר!"
+
+#: greencouriers/controllers/signup.py:64
+msgid "לא תיחמת איזור פעילות"
+msgstr "לא תיחמת איזור פעילות"
+
+#: greencouriers/controllers/signup.py:85
+#, python-format
+msgid "שעה תחתונה לא חוקית - %s"
+msgstr "שעה תחתונה לא חוקית - %s"
+
+#: greencouriers/controllers/signup.py:86
+#, python-format
+msgid "שעה עליוה חוקית - %s"
+msgstr "שעה עליוה חוקית - %s"
+
+#: greencouriers/controllers/signup.py:87
+msgid "טווח שעות אינו חוקי"
+msgstr "טווח שעות אינו חוקי"
+
+#: greencouriers/controllers/signup.py:90
+#, python-format
+msgid "יום אינו חוקי %s"
+msgstr "יום אינו חוקי %s"
+
+#: greencouriers/controllers/signup.py:92
+msgid "לא בחרת אף יום"
+msgstr "לא בחרת אף יום"
+
+#: greencouriers/controllers/signup.py:109
+msgid "שעות אלו כבר תפוסות בלו\"ז שלך."
+msgstr "שעות אלו כבר תפוסות בלו\"ז שלך."
+
+#: greencouriers/controllers/signup.py:132
+msgid "number is bad length (must be 6)"
+msgstr "אורך לא חוקי למספר (חייב להיות 6) "
+
+#: greencouriers/controllers/signup.py:136
+msgid "המספר לא מתאים לפורמט ##(#)-#######"
+msgstr "המספר לא מתאים לפורמט ##(#)-#######"
+
+#: greencouriers/controllers/signup.py:412
+msgid "reset"
+msgstr "reset"
+
+#: greencouriers/controllers/signup.py:413
+msgid "_signup$"
+msgstr "_signup$"
+
+#: greencouriers/controllers/signup.py:430
+msgid "א"
+msgstr "א"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ב"
+msgstr "ב"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ג"
+msgstr "ג"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ד"
+msgstr "ד"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ה"
+msgstr "ה"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ו"
+msgstr "ו"
+
+#: greencouriers/controllers/signup.py:430
+msgid "ש"
+msgstr "ש"
+
+#: greencouriers/controllers/signup.py:445
+msgid "Missing value"
+msgstr "ערך חסר"
+
+#: greencouriers/model/__init__.py:1132
+msgid "Afghanistan"
+msgstr "Afghanistan"
+
+#: greencouriers/model/__init__.py:1133
+msgid "Aland Islands"
+msgstr "Aland Islands"
+
+#: greencouriers/model/__init__.py:1134
+msgid "Albania"
+msgstr "Albania"
+
+#: greencouriers/model/__init__.py:1135
+msgid "Algeria"
+msgstr "Algeria"
+
+#: greencouriers/model/__init__.py:1136
+msgid "American Samoa"
+msgstr "American Samoa"
+
+#: greencouriers/model/__init__.py:1137
+msgid "Andorra"
+msgstr "Andorra"
+
+#: greencouriers/model/__init__.py:1138
+#| msgid "lang"
+msgid "Angola"
+msgstr "Angola"
+
+#: greencouriers/model/__init__.py:1139
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#: greencouriers/model/__init__.py:1140
+msgid "Antarctica"
+msgstr "Antarctica"
+
+#: greencouriers/model/__init__.py:1141
+msgid "Antigua and Barbuda"
+msgstr "Antigua and Barbuda"
+
+#: greencouriers/model/__init__.py:1142
+msgid "Argentina"
+msgstr "Argentina"
+
+#: greencouriers/model/__init__.py:1143
+msgid "Armenia"
+msgstr "Armenia"
+
+#: greencouriers/model/__init__.py:1144
+msgid "Aruba"
+msgstr "Aruba"
+
+#: greencouriers/model/__init__.py:1145
+msgid "Australia"
+msgstr "Australia"
+
+#: greencouriers/model/__init__.py:1146
+msgid "Austria"
+msgstr "Austria"
+
+#: greencouriers/model/__init__.py:1147
+msgid "Azerbaijan"
+msgstr "Azerbaijan"
+
+#: greencouriers/model/__init__.py:1148
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: greencouriers/model/__init__.py:1149
+msgid "Bahrain"
+msgstr "Bahrain"
+
+#: greencouriers/model/__init__.py:1150
+msgid "Bangladesh"
+msgstr "Bangladesh"
+
+#: greencouriers/model/__init__.py:1151
+msgid "Barbados"
+msgstr "Barbados"
+
+#: greencouriers/model/__init__.py:1152
+msgid "Belarus"
+msgstr "Belarus"
+
+#: greencouriers/model/__init__.py:1153
+msgid "Belgium"
+msgstr "Belgium"
+
+#: greencouriers/model/__init__.py:1154
+msgid "Belize"
+msgstr "Belize"
+
+#: greencouriers/model/__init__.py:1155
+msgid "Benin"
+msgstr "Benin"
+
+#: greencouriers/model/__init__.py:1156
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: greencouriers/model/__init__.py:1157
+msgid "Bhutan"
+msgstr "Bhutan"
+
+#: greencouriers/model/__init__.py:1158
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: greencouriers/model/__init__.py:1159
+msgid "Bosnia and Herzegovina"
+msgstr "Bosnia and Herzegovina"
+
+#: greencouriers/model/__init__.py:1160
+msgid "Botswana"
+msgstr "Botswana"
+
+#: greencouriers/model/__init__.py:1161
+msgid "Bouvet Island"
+msgstr "Bouvet Island"
+
+#: greencouriers/model/__init__.py:1162
+msgid "Brazil"
+msgstr "Brazil"
+
+#: greencouriers/model/__init__.py:1163
+msgid "British Indian Ocean Territory"
+msgstr "British Indian Ocean Territory"
+
+#: greencouriers/model/__init__.py:1164
+msgid "Brunei Darussalam"
+msgstr "Brunei Darussalam"
+
+#: greencouriers/model/__init__.py:1165
+msgid "Bulgaria"
+msgstr "Bulgaria"
+
+#: greencouriers/model/__init__.py:1166
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: greencouriers/model/__init__.py:1167
+msgid "Burundi"
+msgstr "Burundi"
+
+#: greencouriers/model/__init__.py:1168
+msgid "Cambodia"
+msgstr "Cambodia"
+
+#: greencouriers/model/__init__.py:1169
+msgid "Cameroon"
+msgstr "Cameroon"
+
+#: greencouriers/model/__init__.py:1170
+msgid "Canada"
+msgstr "Canada"
+
+#: greencouriers/model/__init__.py:1171
+msgid "Cape Verde"
+msgstr "Cape Verde"
+
+#: greencouriers/model/__init__.py:1172
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+#: greencouriers/model/__init__.py:1173
+msgid "Central African Republic"
+msgstr "Central African Republic"
+
+#: greencouriers/model/__init__.py:1174
+msgid "Chad"
+msgstr "Chad"
+
+#: greencouriers/model/__init__.py:1175
+msgid "Chile"
+msgstr "Chile"
+
+#: greencouriers/model/__init__.py:1176
+msgid "China"
+msgstr "China"
+
+#: greencouriers/model/__init__.py:1177
+msgid "Christmas Island"
+msgstr "Christmas Island"
+
+#: greencouriers/model/__init__.py:1178
+msgid "Cocos (Keeling) Islands"
+msgstr "Cocos (Keeling) Islands"
+
+#: greencouriers/model/__init__.py:1179
+msgid "Colombia"
+msgstr "Colombia"
+
+#: greencouriers/model/__init__.py:1180
+msgid "Comoros"
+msgstr "Comoros"
+
+#: greencouriers/model/__init__.py:1181
+msgid "Congo"
+msgstr "Congo"
+
+#: greencouriers/model/__init__.py:1182
+msgid "Congo, Democratic Republic of the"
+msgstr "Congo, Democratic Republic of the"
+
+#: greencouriers/model/__init__.py:1183
+msgid "Cook Islands"
+msgstr "Cook Islands"
+
+#: greencouriers/model/__init__.py:1184
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: greencouriers/model/__init__.py:1185
+msgid "Ivory Coast"
+msgstr "Ivory Coast"
+
+#: greencouriers/model/__init__.py:1186
+msgid "Croatia"
+msgstr "Croatia"
+
+#: greencouriers/model/__init__.py:1187
+msgid "Cuba"
+msgstr "Cuba"
+
+#: greencouriers/model/__init__.py:1189
+msgid "Czech Republic"
+msgstr "Czech Republic"
+
+#: greencouriers/model/__init__.py:1190
+msgid "Denmark"
+msgstr "Denmark"
+
+#: greencouriers/model/__init__.py:1191
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: greencouriers/model/__init__.py:1192
+msgid "Dominica"
+msgstr "Dominica"
+
+#: greencouriers/model/__init__.py:1193
+msgid "Dominican Republic"
+msgstr "Dominican Republic"
+
+#: greencouriers/model/__init__.py:1194
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: greencouriers/model/__init__.py:1195
+msgid "Egypt"
+msgstr "Egypt"
+
+#: greencouriers/model/__init__.py:1196
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: greencouriers/model/__init__.py:1197
+msgid "Equatorial Guinea"
+msgstr "Equatorial Guinea"
+
+#: greencouriers/model/__init__.py:1198
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#: greencouriers/model/__init__.py:1199
+msgid "Estonia"
+msgstr "Estonia"
+
+#: greencouriers/model/__init__.py:1200
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#: greencouriers/model/__init__.py:1201
+msgid "Falkland Islands (Malvinas)"
+msgstr "Falkland Islands (Malvinas)"
+
+#: greencouriers/model/__init__.py:1202
+msgid "Faroe Islands"
+msgstr "Faroe Islands"
+
+#: greencouriers/model/__init__.py:1203
+msgid "Fiji"
+msgstr "Fiji"
+
+#: greencouriers/model/__init__.py:1204
+msgid "Finland"
+msgstr "Finland"
+
+#: greencouriers/model/__init__.py:1205
+msgid "France"
+msgstr "France"
+
+#: greencouriers/model/__init__.py:1206
+msgid "French Guiana"
+msgstr "French Guiana"
+
+#: greencouriers/model/__init__.py:1207
+msgid "French Polynesia"
+msgstr "French Polynesia"
+
+#: greencouriers/model/__init__.py:1208
+msgid "French Southern Territories"
+msgstr "French Southern Territories"
+
+#: greencouriers/model/__init__.py:1209
+msgid "Gabon"
+msgstr "Gabon"
+
+#: greencouriers/model/__init__.py:1210
+msgid "Gambia"
+msgstr "Gambia"
+
+#: greencouriers/model/__init__.py:1211
+msgid "Georgia"
+msgstr "Georgia"
+
+#: greencouriers/model/__init__.py:1213
+msgid "Ghana"
+msgstr "Ghana"
+
+#: greencouriers/model/__init__.py:1214
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: greencouriers/model/__init__.py:1215
+msgid "Greece"
+msgstr "Greece"
+
+#: greencouriers/model/__init__.py:1216
+msgid "Greenland"
+msgstr "Greenland"
+
+#: greencouriers/model/__init__.py:1217
+msgid "Grenada"
+msgstr "Grenada"
+
+#: greencouriers/model/__init__.py:1218
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: greencouriers/model/__init__.py:1219
+msgid "Guam"
+msgstr "Guam"
+
+#: greencouriers/model/__init__.py:1220
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: greencouriers/model/__init__.py:1221
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: greencouriers/model/__init__.py:1222
+msgid "Guinea"
+msgstr "Guinea"
+
+#: greencouriers/model/__init__.py:1223
+msgid "Guinea-Bissau"
+msgstr "Guinea-Bissau"
+
+#: greencouriers/model/__init__.py:1224
+msgid "Guyana"
+msgstr "Guyana"
+
+#: greencouriers/model/__init__.py:1225
+msgid "Haiti"
+msgstr "Haiti"
+
+#: greencouriers/model/__init__.py:1226
+msgid "Heard Island and McDonald Islands"
+msgstr "Heard Island and McDonald Islands"
+
+#: greencouriers/model/__init__.py:1227
+msgid "Holy See (Vatican City State)"
+msgstr "Holy See (Vatican City State)"
+
+#: greencouriers/model/__init__.py:1228
+msgid "Honduras"
+msgstr "Honduras"
+
+#: greencouriers/model/__init__.py:1229
+msgid "Hong Kong"
+msgstr "Hong Kong"
+
+#: greencouriers/model/__init__.py:1230
+msgid "Hungary"
+msgstr "Hungary"
+
+#: greencouriers/model/__init__.py:1231
+msgid "Iceland"
+msgstr "Iceland"
+
+#: greencouriers/model/__init__.py:1232
+msgid "India"
+msgstr "India"
+
+#: greencouriers/model/__init__.py:1233
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#: greencouriers/model/__init__.py:1234
+msgid "Iran, Islamic Republic of"
+msgstr "Iran, Islamic Republic of"
+
+#: greencouriers/model/__init__.py:1235
+msgid "Iraq"
+msgstr "Iraq"
+
+#: greencouriers/model/__init__.py:1236
+msgid "Ireland"
+msgstr "Ireland"
+
+#: greencouriers/model/__init__.py:1237
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+#: greencouriers/model/__init__.py:1238
+msgid "Israel"
+msgstr "ישראל"
+
+#: greencouriers/model/__init__.py:1239
+msgid "Italy"
+msgstr "Italy"
+
+#: greencouriers/model/__init__.py:1240
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#: greencouriers/model/__init__.py:1241
+msgid "Japan"
+msgstr "Japan"
+
+#: greencouriers/model/__init__.py:1242
+msgid "Jersey"
+msgstr "Jersey"
+
+#: greencouriers/model/__init__.py:1243
+msgid "Jordan"
+msgstr "Jordan"
+
+#: greencouriers/model/__init__.py:1244
+msgid "Kazakhstan"
+msgstr "Kazakhstan"
+
+#: greencouriers/model/__init__.py:1245
+msgid "Kenya"
+msgstr "Kenya"
+
+#: greencouriers/model/__init__.py:1246
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: greencouriers/model/__init__.py:1247
+msgid "Korea, Democratic Peoples Republic of"
+msgstr "Korea, Democratic Peoples Republic of"
+
+#: greencouriers/model/__init__.py:1248
+msgid "Korea, Republic of"
+msgstr "Korea, Republic of"
+
+#: greencouriers/model/__init__.py:1249
+msgid "Kuwait"
+msgstr "Kuwait"
+
+#: greencouriers/model/__init__.py:1250
+msgid "Kyrgyzstan"
+msgstr "Kyrgyzstan"
+
+#: greencouriers/model/__init__.py:1251
+msgid "Lao Peoples Democratic Republic"
+msgstr "Lao Peoples Democratic Republic"
+
+#: greencouriers/model/__init__.py:1252
+msgid "Latvia"
+msgstr "Latvia"
+
+#: greencouriers/model/__init__.py:1253
+msgid "Lebanon"
+msgstr "Lebanon"
+
+#: greencouriers/model/__init__.py:1254
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: greencouriers/model/__init__.py:1255
+msgid "Liberia"
+msgstr "Liberia"
+
+#: greencouriers/model/__init__.py:1256
+msgid "Libyan Arab Jamahiriya"
+msgstr "Libyan Arab Jamahiriya"
+
+#: greencouriers/model/__init__.py:1257
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: greencouriers/model/__init__.py:1258
+msgid "Lithuania"
+msgstr "Lithuania"
+
+#: greencouriers/model/__init__.py:1259
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: greencouriers/model/__init__.py:1260
+msgid "Macao"
+msgstr "Macao"
+
+#: greencouriers/model/__init__.py:1261
+msgid "Macedonia, the former Yugoslav Republic of"
+msgstr "Macedonia, the former Yugoslav Republic of"
+
+#: greencouriers/model/__init__.py:1262
+msgid "Madagascar"
+msgstr "Madagascar"
+
+#: greencouriers/model/__init__.py:1263
+msgid "Malawi"
+msgstr "Malawi"
+
+#: greencouriers/model/__init__.py:1264
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#: greencouriers/model/__init__.py:1265
+msgid "Maldives"
+msgstr "Maldives"
+
+#: greencouriers/model/__init__.py:1266
+msgid "Mali"
+msgstr "Mali"
+
+#: greencouriers/model/__init__.py:1267
+msgid "Malta"
+msgstr "Malta"
+
+#: greencouriers/model/__init__.py:1268
+msgid "Marshall Islands"
+msgstr "Marshall Islands"
+
+#: greencouriers/model/__init__.py:1269
+msgid "Martinique"
+msgstr "Martinique"
+
+#: greencouriers/model/__init__.py:1270
+msgid "Mauritania"
+msgstr "Mauritania"
+
+#: greencouriers/model/__init__.py:1271
+msgid "Mauritius"
+msgstr "Mauritius"
+
+#: greencouriers/model/__init__.py:1272
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#: greencouriers/model/__init__.py:1273
+msgid "Mexico"
+msgstr "Mexico"
+
+#: greencouriers/model/__init__.py:1274
+msgid "Micronesia, Federated States of"
+msgstr "Micronesia, Federated States of"
+
+#: greencouriers/model/__init__.py:1275
+msgid "Moldova, Republic of"
+msgstr "Moldova, Republic of"
+
+#: greencouriers/model/__init__.py:1276
+#| msgid "Contact"
+msgid "Monaco"
+msgstr "Monaco"
+
+#: greencouriers/model/__init__.py:1277
+msgid "Mongolia"
+msgstr "Mongolia"
+
+#: greencouriers/model/__init__.py:1278
+msgid "Montenegro"
+msgstr "Montenegro"
+
+#: greencouriers/model/__init__.py:1279
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: greencouriers/model/__init__.py:1280
+msgid "Morocco"
+msgstr "Morocco"
+
+#: greencouriers/model/__init__.py:1281
+msgid "Mozambique"
+msgstr "Mozambique"
+
+#: greencouriers/model/__init__.py:1282
+msgid "Myanmar"
+msgstr "Myanmar"
+
+#: greencouriers/model/__init__.py:1283
+msgid "Namibia"
+msgstr "Namibia"
+
+#: greencouriers/model/__init__.py:1284
+msgid "Nauru"
+msgstr "Nauru"
+
+#: greencouriers/model/__init__.py:1285
+msgid "Nepal"
+msgstr "Nepal"
+
+#: greencouriers/model/__init__.py:1286
+msgid "Netherlands"
+msgstr "Netherlands"
+
+#: greencouriers/model/__init__.py:1287
+msgid "Netherlands Antilles"
+msgstr "Netherlands Antilles"
+
+#: greencouriers/model/__init__.py:1288
+msgid "New Caledonia"
+msgstr "New Caledonia"
+
+#: greencouriers/model/__init__.py:1289
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#: greencouriers/model/__init__.py:1290
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: greencouriers/model/__init__.py:1291
+msgid "Niger"
+msgstr "Niger"
+
+#: greencouriers/model/__init__.py:1292
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: greencouriers/model/__init__.py:1293
+msgid "Niue"
+msgstr "Niue"
+
+#: greencouriers/model/__init__.py:1294
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+#: greencouriers/model/__init__.py:1295
+msgid "Northern Mariana Islands"
+msgstr "Northern Mariana Islands"
+
+#: greencouriers/model/__init__.py:1296
+msgid "Norway"
+msgstr "Norway"
+
+#: greencouriers/model/__init__.py:1297
+msgid "Oman"
+msgstr "Oman"
+
+#: greencouriers/model/__init__.py:1298
+msgid "Pakistan"
+msgstr "Pakistan"
+
+#: greencouriers/model/__init__.py:1299
+msgid "Palau"
+msgstr "Palau"
+
+#: greencouriers/model/__init__.py:1300
+msgid "Palestinian Territory, Occupied"
+msgstr "Palestinian Territory, Occupied"
+
+#: greencouriers/model/__init__.py:1301
+msgid "Panama"
+msgstr "Panama"
+
+#: greencouriers/model/__init__.py:1302
+msgid "Papua New Guinea"
+msgstr "Papua New Guinea"
+
+#: greencouriers/model/__init__.py:1303
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: greencouriers/model/__init__.py:1304
+msgid "Peru"
+msgstr "Peru"
+
+#: greencouriers/model/__init__.py:1305
+msgid "Philippines"
+msgstr "Philippines"
+
+#: greencouriers/model/__init__.py:1306
+msgid "Pitcairn"
+msgstr "Pitcairn"
+
+#: greencouriers/model/__init__.py:1307
+#| msgid "lang"
+msgid "Poland"
+msgstr "Poland"
+
+#: greencouriers/model/__init__.py:1309
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: greencouriers/model/__init__.py:1310
+msgid "Qatar"
+msgstr "Qatar"
+
+#: greencouriers/model/__init__.py:1312
+msgid "Romania"
+msgstr "Romania"
+
+#: greencouriers/model/__init__.py:1313
+msgid "Russian Federation"
+msgstr "Russian Federation"
+
+#: greencouriers/model/__init__.py:1314
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#: greencouriers/model/__init__.py:1315
+msgid "Saint Barthélemy"
+msgstr "Saint Barthélemy"
+
+#: greencouriers/model/__init__.py:1316
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#: greencouriers/model/__init__.py:1317
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts and Nevis"
+
+#: greencouriers/model/__init__.py:1318
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#: greencouriers/model/__init__.py:1319
+msgid "Saint Martin (French part)"
+msgstr "Saint Martin (French part)"
+
+#: greencouriers/model/__init__.py:1320
+msgid "Saint Pierre and Miquelon"
+msgstr "Saint Pierre and Miquelon"
+
+#: greencouriers/model/__init__.py:1321
+msgid "Saint Vincent and the Grenadines"
+msgstr "Saint Vincent and the Grenadines"
+
+#: greencouriers/model/__init__.py:1322
+msgid "Samoa"
+msgstr "Samoa"
+
+#: greencouriers/model/__init__.py:1323
+msgid "San Marino"
+msgstr "San Marino"
+
+#: greencouriers/model/__init__.py:1324
+msgid "Sao Tome and Principe"
+msgstr "Sao Tome and Principe"
+
+#: greencouriers/model/__init__.py:1325
+msgid "Saudi Arabia"
+msgstr "Saudi Arabia"
+
+#: greencouriers/model/__init__.py:1326
+msgid "Senegal"
+msgstr "Senegal"
+
+#: greencouriers/model/__init__.py:1327
+msgid "Serbia"
+msgstr "Serbia"
+
+#: greencouriers/model/__init__.py:1328
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: greencouriers/model/__init__.py:1329
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: greencouriers/model/__init__.py:1330
+msgid "Singapore"
+msgstr "Singapore"
+
+#: greencouriers/model/__init__.py:1331
+msgid "Slovakia"
+msgstr "Slovakia"
+
+#: greencouriers/model/__init__.py:1332
+msgid "Slovenia"
+msgstr "Slovenia"
+
+#: greencouriers/model/__init__.py:1333
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+#: greencouriers/model/__init__.py:1334
+msgid "Somalia"
+msgstr "Somalia"
+
+#: greencouriers/model/__init__.py:1335
+msgid "South Africa"
+msgstr "South Africa"
+
+#: greencouriers/model/__init__.py:1336
+msgid "South Georgia and the South Sandwich Islands"
+msgstr "South Georgia and the South Sandwich Islands"
+
+#: greencouriers/model/__init__.py:1337
+msgid "Spain"
+msgstr "Spain"
+
+#: greencouriers/model/__init__.py:1338
+msgid "Sri Lanka"
+msgstr "Sri Lanka"
+
+#: greencouriers/model/__init__.py:1339
+msgid "Sudan"
+msgstr "Sudan"
+
+#: greencouriers/model/__init__.py:1340
+msgid "Suriname"
+msgstr "Suriname"
+
+#: greencouriers/model/__init__.py:1341
+msgid "Svalbard and Jan Mayen"
+msgstr "Svalbard and Jan Mayen"
+
+#: greencouriers/model/__init__.py:1342
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: greencouriers/model/__init__.py:1343
+msgid "Sweden"
+msgstr "Sweden"
+
+#: greencouriers/model/__init__.py:1344
+msgid "Switzerland"
+msgstr "Switzerland"
+
+#: greencouriers/model/__init__.py:1345
+msgid "Syrian Arab Republic"
+msgstr "Syrian Arab Republic"
+
+#: greencouriers/model/__init__.py:1346
+msgid "Taiwan, Province of China"
+msgstr "Taiwan, Province of China"
+
+#: greencouriers/model/__init__.py:1347
+msgid "Tajikistan"
+msgstr "Tajikistan"
+
+#: greencouriers/model/__init__.py:1348
+msgid "Tanzania, United Republic of"
+msgstr "Tanzania, United Republic of"
+
+#: greencouriers/model/__init__.py:1349
+msgid "Thailand"
+msgstr "Thailand"
+
+#: greencouriers/model/__init__.py:1350
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: greencouriers/model/__init__.py:1351
+msgid "Togo"
+msgstr "Togo"
+
+#: greencouriers/model/__init__.py:1352
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: greencouriers/model/__init__.py:1353
+msgid "Tonga"
+msgstr "Tonga"
+
+#: greencouriers/model/__init__.py:1354
+msgid "Trinidad and Tobago"
+msgstr "Trinidad and Tobago"
+
+#: greencouriers/model/__init__.py:1355
+msgid "Tunisia"
+msgstr "Tunisia"
+
+#: greencouriers/model/__init__.py:1356
+msgid "Turkey"
+msgstr "Turkey"
+
+#: greencouriers/model/__init__.py:1357
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: greencouriers/model/__init__.py:1358
+msgid "Turks and Caicos Islands"
+msgstr "Turks and Caicos Islands"
+
+#: greencouriers/model/__init__.py:1359
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: greencouriers/model/__init__.py:1360
+msgid "Uganda"
+msgstr "Uganda"
+
+#: greencouriers/model/__init__.py:1361
+msgid "Ukraine"
+msgstr "Ukraine"
+
+#: greencouriers/model/__init__.py:1362
+msgid "United Arab Emirates"
+msgstr "United Arab Emirates"
+
+#: greencouriers/model/__init__.py:1363
+msgid "United Kingdom"
+msgstr "United Kingdom"
+
+#: greencouriers/model/__init__.py:1364
+msgid "United States"
+msgstr "United States"
+
+#: greencouriers/model/__init__.py:1365
+msgid "United States Minor Outlying Islands"
+msgstr "United States Minor Outlying Islands"
+
+#: greencouriers/model/__init__.py:1366
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: greencouriers/model/__init__.py:1368
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: greencouriers/model/__init__.py:1369
+msgid "Venezuela, Bolivarian Republic of"
+msgstr "Venezuela, Bolivarian Republic of"
+
+#: greencouriers/model/__init__.py:1370
+msgid "Viet Nam"
+msgstr "Viet Nam"
+
+#: greencouriers/model/__init__.py:1371
+msgid "Virgin Islands, British"
+msgstr "Virgin Islands, British"
+
+#: greencouriers/model/__init__.py:1372
+msgid "Virgin Islands, U.S."
+msgstr "Virgin Islands, U.S."
+
+#: greencouriers/model/__init__.py:1373
+msgid "Wallis and Futuna"
+msgstr "Wallis and Futuna"
+
+#: greencouriers/model/__init__.py:1374
+msgid "Western Sahara"
+msgstr "Western Sahara"
+
+#: greencouriers/model/__init__.py:1375
+msgid "Yemen"
+msgstr "Yemen"
+
+#: greencouriers/model/__init__.py:1376
+msgid "Zambia"
+msgstr "Zambia"
+
+#: greencouriers/model/__init__.py:1377
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: greencouriers/model/__init__.py:1212
+msgid "Germany"
+msgstr "Germany"
+
+#: greencouriers/model/__init__.py:1308
+msgid "Portugal"
+msgstr "Portugal"
+
+#: greencouriers/model/__init__.py:1367
+msgid "Uzbekistan"
+msgstr "Uzbekistan"
+
+#: greencouriers/model/__init__.py:1188
+msgid "Cyprus"
+msgstr "Cyprus"
+
+#: greencouriers/model/__init__.py:1311
+msgid "Reunion"
+msgstr "Reunion"
+
+#: greencouriers/templates/about.html:6
+msgid "אודות"
+msgstr "אודות"
+
+#: greencouriers/templates/about.html:7
+msgid ""
+"הסבך האורבני הצפוף של ארצנו אידאלי לביצוע שליחויות באמצעות אופניים, אך "
+"משום-מה המצב בשטח הוא שחברות השליחויות הגדולות מפעילות ציי קטנועים מזהמים"
+" ויקרים, ויוזמה פרטית שתחסוך בעלויות, תיטיב עם הסביבה ותהיה פחות רועשת "
+"אינה באופק. לא חבל?"
+msgstr ""
+"הסבך האורבני הצפוף של ארצנו אידאלי לביצוע שליחויות באמצעות אופניים, אך "
+"משום-מה המצב בשטח הוא שחברות השליחויות הגדולות מפעילות ציי קטנועים מזהמים"
+" ויקרים, ויוזמה פרטית שתחסוך בעלויות, תיטיב עם הסביבה ותהיה פחות רועשת "
+"אינה באופק. לא חבל?"
+
+#: greencouriers/templates/about.html:10
+#, python-format
+msgid ""
+"אך לא הכל אבוד! בעת השקת האתר, לפחות בעיר תל אביב, הוא שישנם מספר גופים "
+"העוסקים בשליחות אופניים בקנה מידה כזה או אחר. מבין המעטים אליהם אנו "
+"מודעים הם %s, %s, ו-%s"
+msgstr ""
+"אך לא הכל אבוד! בעת השקת האתר, לפחות בעיר תל אביב, הוא שישנם מספר גופים "
+"העוסקים בשליחות אופניים בקנה מידה כזה או אחר. מבין המעטים אליהם אנו "
+"מודעים הם %s, %s, ו-%s"
+
+#: greencouriers/templates/about.html:11
+msgid "צ'יקלטה"
+msgstr "צ'יקלטה"
+
+#: greencouriers/templates/about.html:12
+msgid "בודהא בורגרס"
+msgstr "בודהא בורגרס"
+
+#: greencouriers/templates/about.html:13
+msgid "סאבקוץ' מילגה"
+msgstr "סאבקוץ' מילגה"
+
+#: greencouriers/templates/about.html:15
+msgid "Greenie נכנס לתמונה עם מטרה ספציפית"
+msgstr "Greenie נכנס לתמונה עם מטרה ספציפית"
+
+#: greencouriers/templates/about.html:17
+msgid "להוריד את הרף ולאפשר לכל אחד ואחד למלא את תפקיד השליח"
+msgstr "להוריד את הרף ולאפשר לכל אחד ואחד למלא את תפקיד השליח"
+
+#: greencouriers/templates/about.html:19
+msgid ""
+"Greenie כאן כדי לעודד שליחויות על אופניים, על ידי יצירת כלי יעיל ופשוט "
+"שבתור שלב התחלתי, יחבר בין שליחים לעסקים. אנו מלאי תקווה שתצטרפו אלינו "
+"ותתנו יד בעיצובה של מציאות יפה, ירוקה, והרמונית יותר!"
+msgstr ""
+"Greenie כאן כדי לעודד שליחויות על אופניים, על ידי יצירת כלי יעיל ופשוט "
+"שבתור שלב התחלתי, יחבר בין שליחים לעסקים. אנו מלאי תקווה שתצטרפו אלינו "
+"ותתנו יד בעיצובה של מציאות יפה, ירוקה, והרמונית יותר!"
+
+#: greencouriers/templates/about.html:22
+msgid "מי אנחנו"
+msgstr "מי אנחנו"
+
+#: greencouriers/templates/about.html:25 greencouriers/templates/main.html:78
+msgid "גיא רום"
+msgstr "גיא רום"
+
+#: greencouriers/templates/about.html:26
+msgid ""
+"תכניתן Greenie וכותב שורות אלה. הנני רוכב אופניים מושבע, ומכיר כל סמטה "
+"בת\"א"
+msgstr ""
+"תכניתן Greenie וכותב שורות אלה. הנני רוכב אופניים מושבע, ומכיר כל סמטה "
+"בת\"א"
+
+#: greencouriers/templates/about.html:27
+#, python-format
+msgid ""
+"ליצירת קשר בנוגע לאתר (תקלות, פידבק, הצעות וכיו\"ב) , הנכם מוזמנים לשלוח "
+"מייל ל-%s, או להרים טלפון ל-%s"
+msgstr ""
+"ליצירת קשר בנוגע לאתר (תקלות, פידבק, הצעות וכיו\"ב) , הנכם מוזמנים לשלוח "
+"מייל ל-%s, או להרים טלפון ל-%s"
+
+#: greencouriers/templates/about.html:31
+msgid "שחר זיו"
+msgstr "שחר זיו"
+
+#: greencouriers/templates/about.html:32
+msgid "גרפיקאי וגולש (גלים!) שהתאהב ברעיון והפיח בו צבע וחיים."
+msgstr "גרפיקאי וגולש (גלים!) שהתאהב ברעיון והפיח בו צבע וחיים."
+
+#: greencouriers/templates/about.html:34
+msgid "תודות"
+msgstr "תודות"
+
+#: greencouriers/templates/about.html:37
+msgid "עדי אזר"
+msgstr "עדי אזר"
+
+#: greencouriers/templates/about.html:38
+msgid "יותם שפרוני"
+msgstr "יותם שפרוני"
+
+#: greencouriers/templates/about.html:39
+msgid "Marian Boo"
+msgstr "Marian Boo"
+
+#: greencouriers/templates/about.html:40
+msgid "על עזרה בגיבוש הקונצפט ועבודה מוקדמת על האתר."
+msgstr "על עזרה בגיבוש הקונצפט ועבודה מוקדמת על האתר."
+
+#: greencouriers/templates/about.html:41
+#, python-format
+msgid ""
+"%s, על יצירת מיפוי של המדינה שניתן לעשות בו שימוש ואינטגרציה ללא תשלום. "
+"בלעדיהם הפרויקט לא היה אפשרי!"
+msgstr ""
+"%s, על יצירת מיפוי של המדינה שניתן לעשות בו שימוש ואינטגרציה ללא תשלום. "
+"בלעדיהם הפרויקט לא היה אפשרי!"
+
+#: greencouriers/templates/business.html:3
+msgid "מידע"
+msgstr "מידע"
+
+#: greencouriers/templates/business.html:18
+msgid "שירות זה הינו שלך!"
+msgstr "שירות זה הינו שלך!"
+
+#: greencouriers/templates/business.html:18
+msgid "ערוך מחדש"
+msgstr "ערוך מחדש"
+
+#: greencouriers/templates/business.html:22
+#: greencouriers/templates/courier_signup.html:28
+msgid "פרטים"
+msgstr "פרטים"
+
+#: greencouriers/templates/business.html:26
+#: greencouriers/templates/business_signup.html:118
+#: greencouriers/templates/client_signup.html:8
+#: greencouriers/templates/courier_signup.html:32
+msgid "טלפון"
+msgstr "טלפון"
+
+#: greencouriers/templates/business.html:29
+#: greencouriers/templates/client_signup.html:9
+msgid "כתובת"
+msgstr "כתובת"
+
+#: greencouriers/templates/business.html:33
+msgid "תיאור"
+msgstr "תיאור"
+
+#: greencouriers/templates/business.html:42
+#: greencouriers/templates/business_signup.html:126
+msgid "אתר"
+msgstr "אתר"
+
+#: greencouriers/templates/business.html:48
+msgid "עלות משלוח"
+msgstr "עלות למשלוח"
+
+#: greencouriers/templates/business.html:53
+#: greencouriers/templates/business_signup.html:119
+msgid "זמן משלוח מירבי"
+msgstr "זמן משלוח מירבי"
+
+#: greencouriers/templates/business.html:58
+#: greencouriers/templates/business_signup.html:120
+msgid "תכיפות משלוחים"
+msgstr "תכיפות משלוחים"
+
+#: greencouriers/templates/business.html:63
+msgid "הוסף ע&quot;י"
+msgstr "הוסף ע\"י"
+
+#: greencouriers/templates/business.html:65
+msgid "תאריך הוספה"
+msgstr "תאריך הוספה"
+
+#: greencouriers/templates/business.html:67
+msgid "שעות וימי פעילות"
+msgstr "שעות וימי פעילות"
+
+#: greencouriers/templates/business.html:83
+msgid "בין"
+msgstr "בין"
+
+#: greencouriers/templates/business.html:83
+#: greencouriers/templates/main.html:161
+msgid "בימים"
+msgstr "בימים"
+
+#: greencouriers/templates/business.html:89
+msgid "פעיל עכשיו"
+msgstr "פעיל עכשיו"
+
+#: greencouriers/templates/business.html:104
+#: greencouriers/templates/matches_map.html:10
+msgid "התאמות"
+msgstr "התאמות"
+
+#: greencouriers/templates/business.html:105
+msgid "לחץ כאן למפת התאמות"
+msgstr "לחץ כאן למפת התאמות"
+
+#: greencouriers/templates/business.html:110
+msgid "ציוני משתמשים"
+msgstr "User ratings"
+
+#: greencouriers/templates/business.html:111
+#, python-format
+msgid "לשירות %d ציונים."
+msgstr "לשירות %d ציונים."
+
+#: greencouriers/templates/business.html:117
+msgid "העניק ציון"
+msgstr "העניק ציון"
+
+#: greencouriers/templates/business.html:125
+msgid "ציון ממוצע"
+msgstr "ציון ממוצע"
+
+#: greencouriers/templates/business.html:129
+msgid "ציון השרות"
+msgstr "ציון השרות"
+
+#: greencouriers/templates/business.html:130
+msgid "באם התנסת בשירות זה וברצונך לדרגו, אנא בחר ציון וכתוב ביקורת קצרה"
+msgstr "באם התנסת בשירות זה וברצונך לדרגו, אנא בחר ציון וכתוב ביקורת קצרה"
+
+#: greencouriers/templates/business.html:135
+msgid "ביקורת"
+msgstr "ביקורת"
+
+#: greencouriers/templates/business.html:137
+msgid "שלח"
+msgstr "שלח"
+
+#: greencouriers/templates/business.html:165
+msgid "ציון"
+msgstr "ציון"
+
+#: greencouriers/templates/business_signup.html:4
+msgid "הירשם פה במידה והנך מייצג עסק המעוניין בשירות שליחים."
+msgstr "הירשם פה במידה והנך מייצג עסק המעוניין בשירות שליחים."
+
+#: greencouriers/templates/business_signup.html:11
+msgid "מיקום ואיזור פעילות"
+msgstr "מיקום ואיזור פעילות"
+
+#: greencouriers/templates/business_signup.html:15
+msgid "אנא לחץ על המפה לציון מיקום בית העסק"
+msgstr "אנא לחץ על המפה לציון מיקום בית העסק"
+
+#: greencouriers/templates/business_signup.html:17
+msgid "לציון מיקום חוזר, לחץ"
+msgstr "לציון מיקום חוזר, לחץ"
+
+#: greencouriers/templates/business_signup.html:17
+#: greencouriers/templates/courier_signup.html:95
+msgid "כאן"
+msgstr "כאן"
+
+#: greencouriers/templates/business_signup.html:109
+#: greencouriers/templates/courier_signup.html:23
+msgid "שעות פעילות"
+msgstr "שעות פעילות"
+
+#: greencouriers/templates/business_signup.html:114
+msgid "תיאור העסק"
+msgstr "תיאור העסק"
+
+#: greencouriers/templates/business_signup.html:117
+msgid "שם העסק"
+msgstr "שם עסק"
+
+#: greencouriers/templates/business_signup.html:119
+msgid "דק"
+msgstr "דק"
+
+#: greencouriers/templates/business_signup.html:125
+msgid "תיאור \\ פירוט שרותים \\ תפריט"
+msgstr "תיאור \\ פירוט שרותים \\ תפריט"
+
+#: greencouriers/templates/client_signup.html:3
+#| msgid "הרשמה ללקוחות"
+msgid "הרשמת לקוחות"
+msgstr "הרשמה ללקוחות"
+
+#: greencouriers/templates/client_signup.html:4
+msgid "הירשם פה כדי לקבל עדכונים אודות שליחים ועסקים חדשים באיזורך!"
+msgstr "הירשם פה כדי לקבל עדכונים אודות שליחים ועסקים חדשים באיזורך!"
+
+#: greencouriers/templates/client_signup.html:7
+msgid "פרטים לביצוע משלוח"
+msgstr "פרטים לביצוע משלוח"
+
+#: greencouriers/templates/client_signup.html:7
+msgid "ניתן להשאיר ריק"
+msgstr "ניתן להשאיר ריק"
+
+#: greencouriers/templates/contact.html:2 greencouriers/templates/main.html:36
+msgid "About us"
+msgstr "אודותינו"
+
+#: greencouriers/templates/contact.html:5
+msgid "Contact us form"
+msgstr "טופס יצירת קשר"
+
+#: greencouriers/templates/contact.html:10
+msgid "Name"
+msgstr "שם"
+
+#: greencouriers/templates/contact.html:11
+msgid "Reply address"
+msgstr "כתובת דוא\"ל"
+
+#: greencouriers/templates/contact.html:13
+msgid "Subject"
+msgstr "נושא"
+
+#: greencouriers/templates/contact.html:14
+msgid "Message"
+msgstr "הודעה"
+
+#: greencouriers/templates/contact.html:15
+msgid "Send"
+msgstr "שלח"
+
+#: greencouriers/templates/courier_signup.html:4
+msgid "הירשם פה, במידה והנך מעוניין לבצע שליחויות."
+msgstr "הירשם פה, במידה והנך מעוניין לבצע שליחויות."
+
+#: greencouriers/templates/courier_signup.html:11
+msgid "בחירת איזור"
+msgstr "בחירת איזור"
+
+#: greencouriers/templates/courier_signup.html:30
+msgid "עלות למשלוח"
+msgstr "עלות למשלוח"
+
+#: greencouriers/templates/courier_signup.html:30
+msgid "ש&quot;ח"
+msgstr "ש\"ח"
+
+#: greencouriers/templates/courier_signup.html:33
+msgid "תיאור עצמי"
+msgstr "תיאור עצמי"
+
+#: greencouriers/templates/courier_signup.html:46
+msgid "dright"
+msgstr "right"
+
+#: greencouriers/templates/courier_signup.html:46
+msgid "הסר פעילות"
+msgstr "הסר פעילות"
+
+#: greencouriers/templates/courier_signup.html:47
+msgid "מחק"
+msgstr "מחק"
+
+#: greencouriers/templates/courier_signup.html:72
+msgid "עזרה בסימון"
+msgstr "עזרה בסימון"
+
+#: greencouriers/templates/courier_signup.html:72
+msgid ""
+"תחם את האיזור בו הנך מעוניין לבצע שליחויות, ע&quot;י לחיצות על המפה "
+"ולחיצה כפולה (doubleclick) לסיום."
+msgstr ""
+"תחם את האיזור בו הנך מעוניין לבצע שליחויות, ע\"י לחיצות על המפה ולחיצה "
+"כפולה (doubleclick) לסיום."
+
+#: greencouriers/templates/courier_signup.html:83
+#, python-format
+msgid "בחר %s קיים"
+msgstr "בחר %s קיים"
+
+#: greencouriers/templates/courier_signup.html:95
+msgid "במידה ותרצה לבצע את הסימון מחדש, לחץ"
+msgstr "במידה ותרצה לבצע את הסימון מחדש, לחץ"
+
+#: greencouriers/templates/faq.html:3 greencouriers/templates/faq.html:6
+msgid "שאלות ותשובות"
+msgstr "שאלות ותשובות"
+
+#: greencouriers/templates/faq.html:9
+msgid "האם ההרשמה לאתר מחייבת?"
+msgstr "האם ההרשמה לאתר מחייבת?"
+
+#: greencouriers/templates/faq.html:10
+msgid ""
+"ההרשמה אינה מחייבת כלל. שאיפתנו היא שההרשמה תואיל לשליחים במציאת עסקים "
+"לעבוד מולם, לעסקים תפטור בעיה לוגיסטית, וללקוחות תיתן אלטרנטיבה ירוקה!"
+msgstr ""
+"ההרשמה אינה מחייבת כלל. שאיפתנו היא שההרשמה תואיל לשליחים במציאת עסקים "
+"לעבוד מולם, לעסקים תפטור בעיה לוגיסטית, וללקוחות תיתן אלטרנטיבה ירוקה!"
+
+#: greencouriers/templates/faq.html:12
+msgid "שוב, איך זה עובד?"
+msgstr "שוב, איך זה עובד?"
+
+#: greencouriers/templates/faq.html:14
+msgid ""
+"אתם נרשמים - בתור שליח, עסק או לקוח. בהתאם לאיזור ושעות הפעילות שציינתם "
+"תקבלו עדכונים באמצעות מערכת ה-notifications של פייסבוק אודות שליחים "
+"ועסקים חדשים באיזורכם. כמו כן, באפשרותכם להיכנס לאתר בכל עת ולהסתכל ידנית"
+" על השליחים והעסקים המתאימים לכם."
+msgstr ""
+"אתם נרשמים - בתור שליח, עסק או לקוח. בהתאם לאיזור ושעות הפעילות שציינתם "
+"תקבלו עדכונים באמצעות מערכת ה-notifications של פייסבוק אודות שליחים "
+"ועסקים חדשים באיזורכם. כמו כן, באפשרותכם להיכנס לאתר בכל עת ולהסתכל ידנית"
+" על השליחים והעסקים המתאימים לכם."
+
+#: greencouriers/templates/faq.html:16
+msgid "אז איך בדיוק מתבצעת הזמנה מבית עסק?"
+msgstr "אז איך בדיוק מתבצעת הזמנה מבית עסק?"
+
+#: greencouriers/templates/faq.html:18
+msgid ""
+"כרגע, האתר אינו מטפל בקבלת הזמנות, אלא מאפשר לכם למצוא שליח/בית עסק "
+"רלוונטי בלבד. מה שזה אומר, הוא שתצטרכו להתקשר אל בית העסק או השליח "
+"בעצמכם. לדוגמה, אם ברצונכם להזמין משלוח ממסעדה, אתם מתקשרים אל אותה מסעדה"
+" ומבצעים את ההזמנה, תוך תשלום בכרטיס אשראי. המסעדה, בתורה, מתקשרת אל "
+"שליח, שמביא את ההזמנה לפתח דלתכם."
+msgstr ""
+"כרגע, האתר אינו מטפל בקבלת הזמנות, אלא מאפשר לכם למצוא שליח/בית עסק "
+"רלוונטי בלבד. מה שזה אומר, הוא שתצטרכו להתקשר אל בית העסק או השליח "
+"בעצמכם. לדוגמה, אם ברצונכם להזמין משלוח ממסעדה, אתם מתקשרים אל אותה מסעדה"
+" ומבצעים את ההזמנה, תוך תשלום בכרטיס אשראי. המסעדה, בתורה, מתקשרת אל "
+"שליח, שמביא את ההזמנה לפתח דלתכם."
+
+#: greencouriers/templates/faq.html:20
+msgid "ממה אתם מתפרנסים?"
+msgstr "ממה אתם מתפרנסים?"
+
+#: greencouriers/templates/faq.html:22
+msgid ""
+"נכון לעכשיו, האתר פועל ללא מטרה להרוויח. מטרתנו הינה לשנות את אופן ביצוע "
+"המשלוחים בארץ, ולמקם את האתר כשירות הדפנטיבי בכל הקשור לביצוע משלוחים "
+"לטווחים קצרים. בשלב מאוחר יותר, נשקול לגבות תשלום עבור שירותים נוספים "
+"ממשתמשינו, אך השאיפה הינה להשאיר את השימושיות המרכזית של איתור עסקים "
+"ושליחים חופשית וחינמית."
+msgstr ""
+"נכון לעכשיו, האתר פועל ללא מטרה להרוויח. מטרתנו הינה לשנות את אופן ביצוע "
+"המשלוחים בארץ, ולמקם את האתר כשירות הדפנטיבי בכל הקשור לביצוע משלוחים "
+"לטווחים קצרים. בשלב מאוחר יותר, נשקול לגבות תשלום עבור שירותים נוספים "
+"ממשתמשינו, אך השאיפה הינה להשאיר את השימושיות המרכזית של איתור עסקים "
+"ושליחים חופשית וחינמית."
+
+#: greencouriers/templates/faq.html:25
+msgid "כיצד אני יכול/ה לבטוח בשליח שאיני מכיר?"
+msgstr "כיצד אני יכול/ה לבטוח בשליח שאיני מכיר?"
+
+#: greencouriers/templates/faq.html:27
+msgid ""
+"שאלה מצוינת! Greenie פועל במספר מישורים על מנת להבטיח שלא תפלו קורבן "
+"לרמאות של גורם זדוני שמתחזה לשליח או בית עסק לגיטימיים. ראשית, המערכת "
+"ניתנת לשימוש אך ורק באמצעות הפייסבוק, מה שמבטיח רמה מסוימת של וודאות "
+"שהאדם שבידיו הפקדתם את משלוכחם אינו בעל בזהות בדויה. מומלץ לבחון את דף "
+"הפרופיל של השליח או העסק בפייסבוק לפני ביצוע פעולות מולו, ולהפעיל שיקול "
+"דעת והגיון שרלוונטיים תמיד - אל תפקידו סכומי כסף גדולים או גישה חופשית "
+"לביתכם בידיו של אדם שאינכם מכירים. השירות מתבסס על בניית אמון הדדי "
+"והדרגתי!"
+msgstr ""
+"שאלה מצוינת! Greenie פועל במספר מישורים על מנת להבטיח שלא תפלו קורבן "
+"לרמאות של גורם זדוני שמתחזה לשליח או בית עסק לגיטימיים. ראשית, המערכת "
+"ניתנת לשימוש אך ורק באמצעות הפייסבוק, מה שמבטיח רמה מסוימת של וודאות "
+"שהאדם שבידיו הפקדתם את משלוכחם אינו בעל בזהות בדויה. מומלץ לבחון את דף "
+"הפרופיל של השליח או העסק בפייסבוק לפני ביצוע פעולות מולו, ולהפעיל שיקול "
+"דעת והגיון שרלוונטיים תמיד - אל תפקידו סכומי כסף גדולים או גישה חופשית "
+"לביתכם בידיו של אדם שאינכם מכירים. השירות מתבסס על בניית אמון הדדי "
+"והדרגתי!"
+
+#: greencouriers/templates/faq.html:28
+msgid ""
+"כמו כן, משתמשים יכולים לדרג אחד את השני באמצעות האתר ולכתוב ביקורת - מה "
+"שיתן אינדיקציה לאחרים באם ניתן לעבוד בבטחה מול השירות."
+msgstr ""
+"כמו כן, משתמשים יכולים לדרג אחד את השני באמצעות האתר ולכתוב ביקורת - מה "
+"שיתן אינדיקציה לאחרים באם ניתן לעבוד בבטחה מול השירות."
+
+#: greencouriers/templates/faq.html:32
+msgid "במידה ויש לכם שאלות נוספות, אל תהססו לכתוב ל- "
+msgstr "במידה ויש לכם שאלות נוספות, אל תהססו לכתוב ל- "
+
+#: greencouriers/templates/fb_login.html:6
+msgid "זיהוי נדרש"
+msgstr "זיהוי נדרש"
+
+#: greencouriers/templates/fb_login.html:7
+msgid ""
+"על מנת להשתמש בתכונה זו, עליך להזדהות. השתמשנו במערכת הזיהוי של פייסבוק "
+"בכדי לפשט את השימוש באתר. כמו כן, באפשרותך להזדהות או להירשם באמצעות "
+"חשבון דוא\"ל רגיל."
+msgstr ""
+"על מנת להשתמש בתכונה זו, עליך להזדהות. השתמשנו במערכת הזיהוי של פייסבוק "
+"בכדי לפשט את השימוש באתר. כמו כן, באפשרותך להזדהות או להירשם באמצעות "
+"חשבון דוא\"ל רגיל."
+
+#: greencouriers/templates/fb_login.html:14
+msgid "לחץ על הכפתור על מנת להזדהות במערכת באמצעות חשבון הפייסבוק שלך."
+msgstr "לחץ על הכפתור על מנת להזדהות במערכת באמצעות חשבון הפייסבוק שלך."
+
+#: greencouriers/templates/fb_login.html:32
+msgid "דוא\"ל"
+msgstr "דוא\"ל"
+
+#: greencouriers/templates/fb_login.html:35
+msgid "שם"
+msgstr "שם"
+
+#: greencouriers/templates/fb_login.html:38
+msgid "סיסמא"
+msgstr "סיסמא"
+
+#: greencouriers/templates/fb_login.html:41
+msgid "חזרה על סיסמא"
+msgstr "חזרה על סיסמא"
+
+#: greencouriers/templates/fb_login.html:44
+msgid "כניסה"
+msgstr "כניסה"
+
+#: greencouriers/templates/fb_login.html:45
+msgid "לטופס הרשמה"
+msgstr "לטופס הרשמה"
+
+#: greencouriers/templates/fb_login.html:46
+msgid "איפוס סיסמה"
+msgstr "איפוס סיסמה"
+
+#: greencouriers/templates/fb_login.html:49
+msgid "הרשם"
+msgstr "הרשם"
+
+#: greencouriers/templates/fb_login.html:50
+#: greencouriers/templates/fb_login.html:54
+msgid "לכניסה עם חשבון קיים"
+msgstr "לכניסה עם חשבון קיים"
+
+#: greencouriers/templates/fb_login.html:53
+msgid "אפס סיסמה"
+msgstr "אפס סיסמה"
+
+#: greencouriers/templates/fb_login.html:58
+#, python-format
+msgid "Currently logged in as %s"
+msgstr "מזוהה כ-%s"
+
+#: greencouriers/templates/fb_login.html:58
+#: greencouriers/templates/main.html:39
+msgid "Log out"
+msgstr "התנתק"
+
+#: greencouriers/templates/fb_login.html:102
+msgid "לאחר הזיהוי, תועבר לעמוד בו ביקשת לצפות."
+msgstr "לאחר הזיהוי, תועבר לעמוד בו ביקשת לצפות."
+
+#: greencouriers/templates/language_country.html:3
+#: greencouriers/templates/language_country.html:6
+#: greencouriers/templates/my-account.html:12
+msgid "הגדרות מיקום ושפה"
+msgstr "הגדרות מיקום ושפה"
+
+#: greencouriers/templates/language_country.html:9
+#: greencouriers/templates/my-account.html:8
+msgid "מדינה"
+msgstr "מדינה"
+
+#: greencouriers/templates/language_country.html:13
+msgid "שפה"
+msgstr "שפה"
+
+#: greencouriers/templates/language_country.html:16
+msgid "עדכן"
+msgstr "עדכן"
+
+#: greencouriers/templates/main-intro.html:3
+msgid "השליחים הירוקים"
+msgstr "השליחים הירוקים"
+
+#: greencouriers/templates/main-intro.html:18
+msgid ""
+"Greenie הינה יוזמה חברתית - אקולוגית הבאה לבצע מהפכה בתחום הלוגיסטיקה "
+"הזעירה והמשלוחים."
+msgstr ""
+"Greenie הינה יוזמה חברתית - אקולוגית הבאה לבצע מהפכה בתחום הלוגיסטיקה "
+"הזעירה והמשלוחים."
+
+#: greencouriers/templates/main-intro.html:19
+msgid ""
+"Greenie מאפשר לבעלי עסקים ושליחים לאתר זה את זה ע&quot;פ מיקום גיאוגרפי "
+"ושעות פעילות. על מנת להשתתף,"
+msgstr ""
+"Greenie מאפשר לבעלי עסקים ושליחים לאתר זה את זה ע\"פ מיקום גיאוגרפי ושעות"
+" פעילות. על מנת להשתתף,"
+
+#: greencouriers/templates/main-intro.html:20
+msgid ""
+"כל שעליכם לעשות הוא להזין את פרטיכם - בין אם אתם בית עסק המעוניין בשירות "
+"משלוחים זול, יעיל וירוק, או בעליהם של זוג אופניים המעוניינים בהכנסה "
+"נוספת."
+msgstr ""
+"כל שעליכם לעשות הוא להזין את פרטיכם - בין אם אתם בית עסק המעוניין בשירות "
+"משלוחים זול, יעיל וירוק, או בעליהם של זוג אופניים המעוניינים בהכנסה "
+"נוספת."
+
+#: greencouriers/templates/main-intro.html:22
+#: greencouriers/templates/main-intro.html:42
+#: greencouriers/templates/main.html:17
+msgid "lang"
+msgstr "he"
+
+#: greencouriers/templates/main-intro.html:26
+msgid "הסבר אודות השליחים הירוקים"
+msgstr "הסבר אודות השליחים הירוקים"
+
+#: greencouriers/templates/main-intro.html:30
+msgid "רישום מהיר למערכת באמצעות פייסבוק"
+msgstr "רישום מהיר למערכת באמצעות פייסבוק"
+
+#: greencouriers/templates/main-intro.html:33
+msgid "סמן את האיזור והשעות שלך"
+msgstr "סמן את האיזור והשעות שלך"
+
+#: greencouriers/templates/main-intro.html:36
+msgid "קבל עדכונים על עסקים/רוכבים שעובדים באותו איזור"
+msgstr "קבל עדכונים על עסקים/רוכבים שעובדים באותו איזור"
+
+#: greencouriers/templates/main-intro.html:39
+msgid "הזמן/בצע את השליחות"
+msgstr "הזמן/בצע את השליחות"
+
+#: greencouriers/templates/main-intro.html:46
+msgid "איך זה עובד?"
+msgstr "איך זה עובד?"
+
+#: greencouriers/templates/main-intro.html:57
+msgid "הרשם כשליח, וקבל את רשימת העסקים הירוקים באיזורך עמם באפשרותך לעבוד"
+msgstr "הרשם כשליח, וקבל את רשימת העסקים הירוקים באיזורך עמם באפשרותך לעבוד"
+
+#: greencouriers/templates/main-intro.html:62
+msgid "שים את העסק שלך על המפה!"
+msgstr "שים את העסק שלך על המפה!"
+
+#: greencouriers/templates/main-intro.html:62
+msgid "ציין מיקום, שעות, תפריט שירותים ואפשר ללקוחות ושליחים לעבוד מולך"
+msgstr "ציין מיקום, שעות, תפריט שירותים ואפשר ללקוחות ושליחים לעבוד מולך"
+
+#: greencouriers/templates/main-intro.html:66
+msgid "לקוח פרטי"
+msgstr "לקוח פרטי"
+
+#: greencouriers/templates/main-intro.html:67
+msgid ""
+"כלקוח, באפשרותך לראות מי העסקים והשליחים הירוקים שפועלים בקרבתך ולהשתמש "
+"בשירותיהם"
+msgstr ""
+"כלקוח, באפשרותך לראות מי העסקים והשליחים הירוקים שפועלים בקרבתך ולהשתמש "
+"בשירותיהם"
+
+#: greencouriers/templates/main.html:31
+msgid "Courier signup"
+msgstr "הרשמת שליחים"
+
+#: greencouriers/templates/main.html:32
+msgid "Business signupn"
+msgstr "הרשמת עסקים"
+
+#: greencouriers/templates/main.html:33
+msgid "Customer signup"
+msgstr "הרשמת לקוחות"
+
+#: greencouriers/templates/main.html:34
+msgid "My account"
+msgstr "החשבון שלי"
+
+#: greencouriers/templates/main.html:35
+msgid "FAQ"
+msgstr "שאלות ותשובות"
+
+#: greencouriers/templates/main.html:37
+msgid "Contact"
+msgstr "יצירת קשר"
+
+#: greencouriers/templates/main.html:39
+msgid "Logged in as"
+msgstr "מחובר כ-"
+
+#: greencouriers/templates/main.html:72
+msgid "לוגו של פייתון"
+msgstr "לוגו של פייתון"
+
+#: greencouriers/templates/main.html:73
+msgid "לוגו של פיילונס"
+msgstr "לוגו של פיילונס"
+
+#: greencouriers/templates/main.html:74
+msgid "לוגו של וייז"
+msgstr "לוגו של וייז"
+
+#: greencouriers/templates/main.html:75
+msgid "לוגו של אופנליירס"
+msgstr "לוגו של אופנליירס"
+
+#: greencouriers/templates/main.html:76
+msgid "לוגו של פוסטגרס"
+msgstr "לוגו של פוסטגרס"
+
+#: greencouriers/templates/main.html:78
+msgid "תכנון ופיתוח"
+msgstr "תכנון ופיתוח"
+
+#: greencouriers/templates/main.html:78
+msgid "עיצוב"
+msgstr "עיצוב"
+
+#: greencouriers/templates/main.html:155 greencouriers/templates/main.html:257
+#: greencouriers/templates/main.html:634
+msgid "dir"
+msgstr "rtl"
+
+#: greencouriers/templates/main.html:161
+msgid "פנוי משעה"
+msgstr "פנוי משעה"
+
+#: greencouriers/templates/main.html:161
+msgid "ועד-"
+msgstr "ועד-"
+
+#: greencouriers/templates/main.html:171
+msgid "הסר"
+msgstr "הסר"
+
+#: greencouriers/templates/main.html:178
+msgid "ניתן לציין שעות עם או ללא דקות"
+msgstr "ניתן לציין שעות עם או ללא דקות"
+
+#: greencouriers/templates/main.html:178
+msgid "או"
+msgstr "או"
+
+#: greencouriers/templates/main.html:178
+msgid "הוסף"
+msgstr "הוסף"
+
+#: greencouriers/templates/main.html:247 greencouriers/templates/main.html:252
+msgid "rdir"
+msgstr "ltr"
+
+#: greencouriers/templates/main.html:257
+msgid "עיר"
+msgstr "עיר"
+
+#: greencouriers/templates/main.html:260
+msgid "רחוב"
+msgstr "רחוב"
+
+#: greencouriers/templates/main.html:263
+msgid "מרכז מפה"
+msgstr "מרכז מפה"
+
+#: greencouriers/templates/main.html:475
+msgid "משתמש קיים"
+msgstr "משתמש קיים"
+
+#: greencouriers/templates/main.html:478
+msgid "הצטרפו  לקבוצתנו בפייסבוק"
+msgstr "הצטרפו  לקבוצתנו בפייסבוק"
+
+#: greencouriers/templates/main.html:482
+msgid "נרשמים אחרונים"
+msgstr "נרשמים אחרונים"
+
+#: greencouriers/templates/matches_map.html:3
+#, python-format
+msgid "התאמות עבור %s"
+msgstr "התאמות עבור %s"
+
+#: greencouriers/templates/matches_map.html:20
+msgid "התאמת איזור"
+msgstr "התאמת איזור"
+
+#: greencouriers/templates/matches_map.html:22
+msgid "התאמת שעות"
+msgstr "התאמת שעות"
+
+#: greencouriers/templates/matches_map.html:25
+msgid "פעיל עכשיו!"
+msgstr "פעיל עכשיו!"
+
+#: greencouriers/templates/matches_map.html:27
+msgid "קישור"
+msgstr "קישור"
+
+#: greencouriers/templates/my-account.html:3
+msgid "החשבון שלי"
+msgstr "החשבון שלי"
+
+#: greencouriers/templates/my-account.html:5
+msgid "מזוהה במערכת כ-"
+msgstr "מזוהה במערכת כ-"
+
+#: greencouriers/templates/my-account.html:7
+msgid "שפת ממשק"
+msgstr "שפת ממשק"
+
+#: greencouriers/templates/my-account.html:11
+msgid "שינוי שם"
+msgstr "שינוי שם"
+
+#: greencouriers/templates/my-account.html:15
+msgid "פעילויות קיימות"
+msgstr "פעילויות קיימות"
+
+#: greencouriers/templates/my-account.html:25
+msgid "עריכה"
+msgstr "עריכה"
+
+#: greencouriers/templates/my-account.html:26
+msgid "צפייה"
+msgstr "צפייה"
+
+#~ msgid "תיחום מ-%s"
+#~ msgstr "תיחום מ-%s"
+
+#~ msgid " באיזור %s"
+#~ msgstr " באיזור %s"
+
+#~ msgid "מיקום מ-%s"
+#~ msgstr "מיקום מ-%s"
+
+#~ msgid "point %s"
+#~ msgstr "נקודה %s"
+
+#~ msgid "%s באיזור %s"
+#~ msgstr "%s באיזור %s"
+

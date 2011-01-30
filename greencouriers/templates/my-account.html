@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/matches_map.html" />
+<%def name="title()">${_(u'החשבון שלי')}</%def>
+<%def name="main_heading()">
+<h3><span class='repl'>${_(u'מזוהה במערכת כ-')}</span><fb:name useyou="false" uid="${c.user.fb_uid}" style='font-family:arial'>${c.user.name}</fb:name></h3>
+<ul>
+<li>${_(u'שפת ממשק')}: ${dict(c.langs)[c.user.lang]}</li>
+<li>${_(u'מדינה')}: ${_(c.user_country.name)}</li>
+</ul>
+
+<a href="${url.current(action='change_name')}">${_(u'שינוי שם')}</a> :: 
+<a href="${url.current(action='language_country_settings')}">${_(u'הגדרות מיקום ושפה')}</a>
+<br />
+<fb:profile-pic facebook-logo="true" uid="${c.user.fb_uid}"></fb:profile-pic>
+<h3 class='repl'>${_(u'פעילויות קיימות')}</h3>
+</%def>
+<%def name="main_content()">
+<div class='main thin'>
+${self.main_heading()}
+${self.show_items(c.activities,is_match=False)}
+</div>
+</%def>
+<%def name="item_content(a)">  
+${a}<br />
+<a class='inline-button' href="${url.current(controller='%s_edit'%a.activity_type,id=a.id)}"><em>${_(u'עריכה')}</em></a><br />
+<a class='inline-button' href="${url.current(controller=a.activity_type,id=a.id)}"><span>${_(u'צפייה')}</span></a><br />
+</%def>
+

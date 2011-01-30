@@ -1,0 +1,130 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/courier_signup.html" />
+<%def name="title()">${c.title}</%def>
+<%def name="explanation()">${_(u'הירשם פה במידה והנך מייצג עסק המעוניין בשירות שליחים.')}</%def>
+<%def name="main_content()">
+<div class='main'>
+<h3 class='repl'>${c.title}</h3>
+${h.form(url.current(action='signup'),id='frm')}
+<h4>${self.explanation()}</h4>
+<fieldset>
+  <legend>${_(u'מיקום ואיזור פעילות')}</legend>
+
+  <form:error name='location' />
+  ${self.picker_header()}
+  <p id='business_marker_lbl'>${_(u'אנא לחץ על המפה לציון מיקום בית העסק')}</p>
+  <p style='display:none' id='business_marker_retry_lbl'>
+    ${_(u'לציון מיקום חוזר, לחץ')} <a href='#' id='business_marker_retry' class='inline-button'><em>${_(u'כאן')}</em><img src='/images/mark-dot.png' width=20 /></a></p>
+  ${self.location_picker('map',start_marking_area=c.start_marking_area,feature_added_cb='poly_put_business',obj_global=True,existing_area=c.existing_area,markers_layer=True,style='business',city_search=True,street_search=True)}
+</fieldset>
+
+${self.form_fields()}
+
+${self.control_buttons()}
+<%doc><div class='submdiv'><a class='button' id='frm_submit' class='frm_submit' href='#'><span>${c.submit_button}</span></a>
+% if c.update_mode:
+<a style='float:right' class='button' id='del_btn' href='#'><span>${_(u'מחק')}</span></a>
+% endif
+</div>
+
+</div>
+## ${h.submit('signup',c.submit_button)}
+</%doc>
+
+
+${h.end_form()}
+
+${self.signup_logic(start_marking_area=c.start_marking_area,existing_area=c.existing_area,no_accord=True)}
+
+<script type='text/javascript'>
+function poly_put_business(a) {
+poly_put(a);
+if ($('marker_data') && accord) accord.activate($('hours_section'));
+}
+function map_clicked(e,lonlat) {
+    var icon = new OpenLayers.Icon('/js/img/marker-blue.png'); //size,offset
+    map.marker = new OpenLayers.Marker(new OpenLayers.LonLat(lonlat.lon,lonlat.lat),icon)
+    map.markers.addMarker(map.marker);
+    //map.map.setCenter(new OpenLayers.LonLat(lonlat.lon, lonlat.lat), 7);        
+    $('marker_data').value = lonlat.lon+', '+lonlat.lat;
+    nullify_existing('marker');
+    $('business_marker_lbl').hide();
+    $('business_marker_retry_lbl').show();
+    map.clickctl.deactivate(); 
+    if (accord) accord.activate($('hours_section'));
+}
+function marker_retry(e) 
+{
+if (e) Event.stop(e);
+    map.marker.destroy();
+    $('marker_data').value='';
+    map.clickctl.activate(); 
+    $('business_marker_lbl').show(); $('business_marker_retry_lbl').hide();
+}
+var accord=null;
+    Event.observe($('map'),'openlayers:ready',function() {
+    map.clickctl = new OpenLayers.Control.Click();
+    map.map.addControl(map.clickctl);
+    //this is to override courier signup defaults
+    map.polyctl.deactivate(); 
+    $('start_marking_lbl').hide();
+    
+    $('business_marker_retry').observe('click',marker_retry);
+    $('existing_marker').observe('change',redraw_marker);
+
+    % if c.existing_marker:
+    draw_marker(${c.existing_marker.points[0].pos_lon},${c.existing_marker.points[0].pos_lat});
+    $('business_marker_lbl').hide();
+    $('business_marker_retry_lbl').show();
+    $('start_marking_lbl').show();
+    % else:
+    map.clickctl.activate(); 
+    % endif
+});
+Event.observe(window,'load',function() {
+
+    % if not c.no_accord:
+    //business accord
+    //accord = new accordion('accord',{animating:false});
+    % if not c.existing_marker:
+    if (accord) accord.activate($('map_section'));
+    % elif not c.schedule_valid:
+    if (accord) accord.activate($('hours_section'));
+    % else:
+    if (accord) accord.activate($('info_section'));
+    % endif
+    % endif
+
+//clickctl activate previous
+
+
+
+
+});
+</script>
+</div>
+</%def>
+<%def name="form_fields()">
+<fieldset>
+  <legend>${_(u'שעות פעילות')}</legend>
+  ${self.hours_selector()}
+</fieldset>
+
+<fieldset>
+  <legend>${_(u'תיאור העסק')}</legend>
+
+  <div class='accordion_content'>
+    <div><label for='business_name'>${_(u'שם העסק')}</label>${h.text('business_name',c.act.business_name)} * </div>
+    <div><label for='phone'>${_(u'טלפון')}</label>${h.text('phone',c.act.phone,dir='ltr')} * </div>
+    <div><label for='max_delivery_time'>${_(u'זמן משלוח מירבי')}</label>${h.select('max_delivery_time',c.act.max_delivery_time or '50',range(10,130,10))} ${_(u'דק')} * </div>
+    <div><label for='deliveries_freq'>${_(u'תכיפות משלוחים')}</label>
+      <% from greencouriers.controllers.business_signup import deliveries_freq %>
+      ${h.select('deliveries_freq',c.act.deliveries_freq or 'rare',deliveries_freq)}
+    </div>
+    
+    <div><label for='description'>${_(u'תיאור \ פירוט שרותים \ תפריט')}</label> ${h.textarea('description',c.act.description,style='height:200px')}</div>
+    <div><label for='url'>${_(u'אתר')}</label> 
+      ${h.text('url',(c.act.url or ''),dir='ltr')}
+</div>
+</fieldset>
+</%def>

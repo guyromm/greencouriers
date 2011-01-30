@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">שינוי שם</%def>
+<%def name="main_content()">
+<div class='main'>
+<h3 class='repl'>שינוי שם</h3>
+${h.form(url.current(action='submit_name_change'))}
+<label for='name'>הקלד שם או כינוי חדש: </label>${h.text('name',c.user.name)}
+${h.submit('change',u'עדכן')}
+${h.end_form()}
+</div>
+</%def>

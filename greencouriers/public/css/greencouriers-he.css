@@ -1,0 +1,140 @@
+.highlight {
+    font-weight:bold;
+    color:orange;
+}
+.main,.main-wide {
+    clear:right;
+}
+.main-container {
+min-height:500px;
+}
+.header,.main-container,.footer {
+    direction:rtl;
+}
+
+.lead-on {
+    direction:ltr;
+    clear:right;
+}
+.path-link {
+    direction:rtl;
+}
+.submdiv {
+    direction:ltr;
+}
+.map-search {
+    direction:rtl;
+}
+.fb-login,.left-bar {
+    float:left;
+    }
+.button-area {
+    float:right;
+}
+#new_courier {
+    float:right;
+}
+#new_client {
+    float:right;
+}
+#new_business {
+    float:right;
+}
+.del_btn {    
+    float:right;
+}
+#start_marking_lbl {
+    float:left;
+}
+.rating_icon,.rating_icon_selected {    
+    float:right;
+    }
+.logincolumn {
+    float:right;
+}
+
+.first {
+    right:0px;
+}
+.second {
+    right:180px;
+}
+.third {
+    right:390px;
+}
+.path-link {
+    text-align:right;
+}
+
+#new_courier {
+    width:133px;
+    height:42px;
+    background-image:url(/shachar/courier.arrow.dark.jpg);
+}
+
+#new_courier:hover  {
+    background-image:url(/shachar/courier.arrow.light.jpg);
+}
+#new_client {
+    width:197px;
+    height:42px;
+    background-image:url(/shachar/client.arrow.dark.jpg);
+}
+#new_client:hover {
+    background-image:url(/shachar/client.arrow.light.jpg);
+}
+#new_business {
+    width:122px;
+    height:42px;
+    background:transparent url(/shachar/business.arrow.dark.jpg) no-repeat;
+}
+#new_business:hover {
+    background-image:url(/shachar/business.arrow.light.jpg);
+    }
+#new_client,#new_courier,#new_business,#existing_user,#last_signups,.frm_submit,.frm_update,.del_btn,.edit-btn {
+    display:block;
+    font-size:0px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:white;
+}
+#existing_user {
+    height:14px;
+    width:123px;
+    background-image:url(/shachar/existing.user.jpg);
+}
+#last_signups {
+    height:11px;
+    width:148px;
+    background-image:url(/shachar/last.signups.jpg);
+}
+ul li {
+    list-style-image:url(/shachar/arrow.left.jpg);
+}
+.matches dt {
+    background:transparent url(/shachar/arrow.left.jpg) no-repeat center right;
+}
+.sarrow {
+    background:transparent url(/shachar/arrow.left.jpg) no-repeat center right;
+}
+
+.frm_submit {
+    display:inline-block;
+    text-align:left;
+    width:95px;
+    height:29px;
+    background-image:url(/shachar/signup.button.dark.jpg);
+}
+.frm_submit:hover {
+    background-image:url(/shachar/signup.button.light.jpg);
+}
+
+.frm_update {
+    text-align:left;
+    width:81px;
+    height:29px;
+    background-image:url(/shachar/update.button.light.jpg);
+}
+.frm_update:hover {
+    background-image:url(/shachar/update.button.dark.jpg);
+}

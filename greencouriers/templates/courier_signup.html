@@ -1,0 +1,216 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">${c.title}</%def>
+<%def name="explanation()">${_(u'הירשם פה, במידה והנך מעוניין לבצע שליחויות.')}</%def>
+<%def name="main_content()">
+<div class='main'>
+  <h3 class='repl'>${_(u'הרשמה לשליחים')}</h3>
+  ${h.form(url.current(action='signup'),id='frm')}
+  <h4>${self.explanation()}</h4>
+  <fieldset>
+    <legend>${_(u'בחירת איזור')}</legend>
+    <form:error name="location"></form:error>
+    
+    ${self.picker_header()}
+
+    ${self.location_picker('map',start_marking_area=c.start_marking_area,start_marking_marker=c.start_marking_marker,feature_added_cb='poly_put_cb',obj_global=True,existing_area=c.existing_area,style='courier',city_search=True,street_search=True)}
+    
+    ${self.signup_logic(c.start_marking_area,c.existing_area,no_accord=True)} 
+
+  </fieldset>
+  
+  <fieldset>
+    <legend>${_(u'שעות פעילות')}</legend>
+    ${self.hours_selector()}
+  </fieldset>
+  
+  <fieldset>
+    <legend>${_(u'פרטים')}</legend>
+    
+    <div><label for='delivery_price'>${_(u'עלות למשלוח')}</label> ${h.text('delivery_price',c.act.delivery_price,dir='ltr',class_='w30')} ${_(u'ש&quot;ח')} <form:error name="delivery_price" />* </div>
+    
+    <div><label for='phone'>${_(u'טלפון')}</label> ${h.text('phone',c.act.phone,dir='ltr',class_='w150')}    <form:error name="phone"></form:error> * </div>
+    <div><label for='description'>${_(u'תיאור עצמי')}</label> ${h.textarea('description',c.act.description,class_='w150')}</div>
+    
+  </fieldset>
+  
+${self.control_buttons()}
+  
+  ${h.end_form()}
+</div>
+</%def>
+<%def name="control_buttons()">
+
+  <div class='submdiv'>
+  % if c.update_mode:
+  <a id='del_lnk' style='float:${_('dright')}' href='#'>${_(u'הסר פעילות')}</a>
+  <input style='display:none' type='image' name='delete' value="${_(u'מחק')}" class='del_btn' id='del_btn' />
+  <script type='text/javascript'>
+    Event.observe(window,'load',function() {
+    $('del_lnk').observe('click',function() {
+    $('del_btn').click();
+    });
+    });
+    </script>
+  ## ${h.submit('delete',u'מחק',id='del_btn')}
+  % endif
+<a class='button\
+% if c.update_mode:
+ frm_update\
+% else:
+ frm_submit
+% endif
+' id='frm_submit' href='#'><span>${c.submit_button}</span></a></div>
+  
+
+
+</%def>
+    <%def name="picker_header()">
+    % for hi in c.hidden_inputs:
+    <input type='hidden' name='${hi}' id='${hi}' value='' />
+    % endfor
+<p id='start_marking_lbl'><a  target='_blank' href="${url.current(controller='help',action='marking')}">${_(u'עזרה בסימון')}</a> ${_(u'תחם את האיזור בו הנך מעוניין לבצע שליחויות, ע&quot;י לחיצות על המפה ולחיצה כפולה (doubleclick) לסיום.')}</p>
+
+
+% for existing_name in c.existings:
+    <div id='${existing_name}_choose'>
+<% 
+import re 
+myseldata = [(a.id,a) for a in getattr(c,re.sub('existing_','',existing_name)+'s')]
+if not len(myseldata): 
+   myseldata=[('','')]
+%>
+${_(u'בחר %s קיים')%c.existings_labels[existing_name]} : ${h.select(existing_name,getattr(c,existing_name+'_id'),myseldata,id=existing_name)}
+
+<script type='text/javascript'>
+
+  if ($('${existing_name}').options.length<2) $('${existing_name}_choose').hide();
+</script>
+</div>
+% endfor
+
+</%def>
+    <%def name="signup_logic(start_marking_area,existing_area,no_accord=False)">
+
+<p id='mark_again_lbl'>${_(u'במידה ותרצה לבצע את הסימון מחדש, לחץ')} <a class='inline-button' href='#' id='mark_again'><em>${_(u'כאן')}</em><img width=20 src='/images/mark-poly.png' alt="${_(u'סימון פוליגון מחדש')}" /></a>.</p>
+
+<script type='text/javascript'>
+var accord;
+function show(el) {
+new Effect.SlideDown(el);
+}
+function hide(el) {
+new Effect.SlideUp(el);
+}
+Event.observe(window,'load',function() {
+
+$('frm_submit').observe('click',function(e) { Event.stop(e); $('frm').submit(); } );
+
+
+if ($('del_btn')) {
+    $('del_btn').observe('click',function(e) {
+	Event.stop(e);
+	$('frm').action="${url.current(action='delete')}";
+	$('frm').submit();
+    });
+}
+% if not no_accord:
+//courier accord
+accord = new accordion('accord');
+    % if not c.existing_area:
+    accord.activate($('map_section'));
+    % elif not c.schedule_valid:
+    accord.activate($('hours_section'));
+    % else:
+    accord.activate($('info_section'));
+    % endif
+% endif
+
+% if start_marking_area:
+show($('start_marking_lbl'));
+% else:
+hide($('start_marking_lbl'));
+% endif
+% if existing_area:
+    $('poly_data').value=null;
+show($('mark_again_lbl'));
+	% else:
+hide($('mark_again_lbl'));
+% endif
+});
+function nullify_existing(what)
+{
+    if (!what) what='area';
+    if ($('existing_'+what))
+    {
+	$('existing_'+what).insert(new Element('option',{'value':''}))
+	$('existing_'+what).value='';
+    }
+}
+function poly_put_cb(a) {
+poly_put(a);
+if (accord) accord.activate($('hours_section'));
+}
+    function poly_put(a) {
+	map.feature = a;
+	a.style=OpenLayers.Util.extend(styles['${c.activity_type}'],a.style);
+	a.layer.drawFeature(a);
+	$('poly_data').value = a.geometry.components[0].getComponentsString();
+	nullify_existing();
+map.polyctl.deactivate(); 
+hide($('start_marking_lbl'));show($('mark_again_lbl'));
+    }
+$('mark_again').observe('click',function(e) { Event.stop(e);
+show($('start_marking_lbl'));hide($('mark_again_lbl'));
+    nullify_existing();
+    map.feature.destroy();
+map.polyctl.activate(); 
+});
+
+function draw_marker(lon,lat,zoom)
+{	
+    if (!zoom) zoom=7;
+    $('marker_data').value=null;
+    if (map.marker) map.marker.destroy();
+    var icon = new OpenLayers.Icon('/js/img/marker-blue.png'); //size,offset
+    map.marker = new OpenLayers.Marker(new OpenLayers.LonLat(lon,lat),icon)
+    map.markers.addMarker(map.marker);
+    
+    map.map.setCenter(new OpenLayers.LonLat(lon,lat),zoom);
+}
+function redraw_marker() {
+
+    var id = $('existing_marker').value;
+    a = new Ajax.Request("${url.current(action='get_area',id='TOKEN')}".replace('TOKEN',encodeURIComponent(id)),{'onSuccess':function(t) {
+	var r = t.responseText.evalJSON();
+	draw_marker(r.points[0].lon, r.points[0].lat);
+
+    }});
+}
+function redraw_area() {
+    var id = $('existing_area').value;
+    a = new Ajax.Request("${url.current(action='get_area',id='TOKEN')}".replace('TOKEN',encodeURIComponent(id)),{'onSuccess':function(t) {
+	var r = t.responseText.evalJSON();
+	$('poly_data').value=null;
+	points=[];
+	for (var i=0;i<r.points.length;i++)
+	{
+	    points.push(new OpenLayers.Geometry.Point(r.points[i].lon,r.points[i].lat));
+	}
+	map.feature.destroy();
+	//var st = OepnLayers.Style(styles["${c.activity_type}"]);
+	map.feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Polygon(new OpenLayers.Geometry.LinearRing(points)),null,styles["${c.activity_type}"]); 
+	map.vectors.addFeatures([map.feature]);	
+	map.polyctl.deactivate(); 
+
+	de = map.vectors.getDataExtent();
+
+	map_pan_to_vectors();
+	//map.map.setCenter(new OpenLayers.LonLat(r.points[0].lon, r.points[0].lat), 6);	
+    }});
+}
+
+if ($('existing_area')) 
+    $('existing_area').observe('change',redraw_area);
+</script>
+</%def>

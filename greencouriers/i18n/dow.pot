@@ -1,0 +1,20 @@
+msgid "ð"
+msgstr ""
+
+msgid "ñ"
+msgstr ""
+
+msgid "ò"
+msgstr ""
+
+msgid "ó"
+msgstr ""
+
+msgid "ô"
+msgstr ""
+
+msgid "õ"
+msgstr ""
+
+msgid "©"
+msgstr ""

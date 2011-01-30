@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">${_(u'הגדרות מיקום ושפה')}</%def>
+<%def name="main_content()">
+<div class='main'>
+<h2>${_(u'הגדרות מיקום ושפה')}</h2>
+${h.form(url.current(action='submit_language_country'))}
+<div>
+<label for='country'>${_(u'מדינה')}</label> 
+${h.select('country',c.user.country,c.countries)}
+</div>
+<div>
+<label for='lang'>${_(u'שפה')}</label>
+${h.select('lang',c.user.lang,c.langs)}
+</div>
+${h.submit('update',_(u'עדכן'))}
+${h.end_form()}
+</div>
+</%def>

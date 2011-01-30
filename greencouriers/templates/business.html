@@ -1,0 +1,194 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">${_(u'מידע')} על ${c.b}</%def>
+<%def name="main_content()">
+<div class='main-wide'>
+
+${self.wallpost_logic()}
+
+<h2 class='repl'>${self.title()}</h2>
+
+<div class='left-bar wide'>
+${self.location_picker('business',existing_area=c.b.area,existing_marker=c.b.marker,style=c.b.activity_type,center_on_marker=True,navigable=True,width='400px',style_append='float:left;margin-left:10px;margin-right:10px')}
+</div>
+
+<div>
+
+% if c.user==c.b.user:
+<p>${_(u'שירות זה הינו שלך!')}<br /><a href="${url.current(controller='%s_edit'%c.b.activity_type)}"><span>${_(u'ערוך מחדש')}</span></a>
+</p>
+% endif
+
+  <h3 class='repl'>${_(u'פרטים')}</h3>
+<div class='activity'>
+  <dl>
+    ${self.activity_info()}
+    <dt>${_(u'טלפון')}</dt>
+    <dd>${c.b.phone}</dd>
+    % if c.b.address:
+    <dt>${_(u'כתובת')}</dt>
+    <dd>${c.b.address}</dd>
+    % endif
+    % if c.b.description:
+    <dt>${_(u'תיאור')}</dt>
+    <% 
+       import re,cgi
+       reg = re.compile('([\r\n]+)')
+       %>
+    <dd>${reg.sub('<br />',cgi.escape(c.b.description))|n}</dd>
+    % endif
+
+    % if c.b.url:
+    <dt>${_(u'אתר')}</dt>
+    <% import re %>
+    <dd><a href="${c.b.url}" rel='nofollow'>${re.compile('^http(s|)\:\/\/(www\.|)').sub('',c.b.url)}</a></dd>
+    % endif
+
+    % if c.b.delivery_price:
+    <dt>${_(u'עלות משלוח')}</dt>
+    <dd>${c.b.delivery_price} ש&quot;ח</dd>
+    % endif
+    
+    % if c.b.max_delivery_time:
+    <dt>${_(u'זמן משלוח מירבי')}</dt>
+    <dd>${c.b.max_delivery_time} דק'</dd>
+    % endif
+
+    % if c.b.deliveries_freq:
+    <dt>${_(u'תכיפות משלוחים')}</dt>
+    <% from greencouriers.controllers.business_signup import deliveries_freq %>
+    <dd>${dict(deliveries_freq)[c.b.deliveries_freq]}</dd>
+    % endif
+
+    <dt>${_(u'הוסף ע&quot;י')}</dt>
+    <dd><fb:name uid="${c.b.user.fb_uid}" capitalize="true" linked="true">${c.b.user}</fb:name></dd>
+    <dt>${_(u'תאריך הוספה')}</dt>
+    <dd>${c.b.entry_stamp}</dd>
+    <dt>${_(u'שעות וימי פעילות')}</dt>
+    <dd>
+      <%
+if len(c.b.schedules)>1: 
+      bullet=True
+else: 
+      bullet=False
+	 %>
+      % if bullet:
+      <ul>
+	% endif
+	<% import string %>
+    % for sc in c.b.schedules:
+	% if bullet:
+    <li>
+      % endif
+      ${_(u'בין')} ${sc.hours[0].time_from} ל-${sc.hours[0].time_to} ${_(u'בימים')} ${string.join([c.weekdays[sc.weekday] for sc in sc.weekdays],' , ')}
+      % if bullet:
+    </li>
+    % endif
+    % endfor
+    % if True in [sc.isnow() for sc in c.b.schedules]:
+    <b id='active_now'>${_(u'פעיל עכשיו')}</b>
+    <script type='text/javascript'>
+      Event.observe(window,'load',function() {
+      Effect.Pulsate($('active_now'),{duration:5});
+      });
+    </script>
+    % endif
+    % if bullet:
+      </ul>
+% endif
+    </dd>
+  </dl>
+</div><!--activity-->  
+
+  % if len(c.service_matches):
+  <h3 class='repl'>${_(u'התאמות')}</h3>
+  <a href="${url.current(action='matches_map',id=c.b.id)}">${_(u'לחץ כאן למפת התאמות')}</a>
+  % endif
+
+
+% if len(c.b.ratings):
+<h3 class='repl'>${_(u'ציוני משתמשים')}</h3>
+<p>${_(u"לשירות %d ציונים.")%len(c.b.ratings)}</p>
+<ul>
+<% avg=0 %>
+% for rt in c.b.ratings:
+<li>
+<fb:name uid="${rt.by_user.fb_uid}" capitalize="true" linked="true">${rt.by_user}</fb:name>
+${_(u'העניק ציון')} ${rt.rating}\
+% if rt.comment:
+ - ${rt.comment}
+% endif
+.</li>
+<% avg+=rt.rating %>
+% endfor
+</ul>
+${_(u'ציון ממוצע')}: ${avg/len(c.b.ratings)}
+% endif
+
+% if c.can_comment:
+  <h3 class='repl'>${_(u'ציון השרות')}</h3>
+  <p>${_(u'באם התנסת בשירות זה וברצונך לדרגו, אנא בחר ציון וכתוב ביקורת קצרה')}:</p>
+  <form:error name="general" />
+  ${h.form(url.current(action='critique',id=c.b.id),method='post',id='critique_frm')}
+  ${self.rating_widget('rating')}
+
+  ${_(u'ביקורת')}: <br />
+  ${h.textarea('comment')}<br />
+  <a class='button repl' href='#' id='comment_submit'><span>${_(u'שלח')}</span></a>
+  <script type='text/javascript'>
+    Event.observe(window,'load',function() {
+    $('comment_submit').observe('click',function (ev) {
+    Event.stop(ev);
+    $('critique_frm').submit();
+    });
+    });
+    </script>
+
+  ${h.end_form()}
+
+% endif
+
+</div>
+
+<% import simplejson %>
+
+
+
+</div>
+</%def>
+<%def name="activity_info()">
+
+</%def>
+    <%def name="rating_widget(name='rating')">
+<div style='height:35px'>
+  % for i in range(1,6):
+  <a class='rating_icon' id='rating_${i}' alt="${_(u'ציון')} ${i}"></a>
+  % endfor
+</div>
+<span id='${name}_repr'></span>
+  <script type='text/javascript'>
+    Event.observe(window,'load',function() {
+	var rg = /${name}_([0-9]+)$/;
+	$$('.rating_icon').each(function(el) {
+	    el.observe('mouseover',function(ev) {
+		var res = rg.exec(el.id)[1];
+		for (i=1;i<=5;i++)
+		{
+		    if ((res)>=i) clsn='rating_icon_selected';
+		    else clsn='rating_icon';
+		    $('${name}_'+i).className=clsn;
+		}
+		
+	    });
+	    el.observe('click',function(ev) {
+		var res = rg.exec(el.id)[1];
+		$('rating').value=res;
+      $('${name}_repr').innerHTML='ציון <b>'+res+'</b> ניתן. אנא כתוב ביקורת ולחץ "שלח".';
+      $('comment').focus();
+      new Effect.Highlight($('comment'));      new Effect.Highlight($('${name}_repr'));
+	    });
+    });
+    });
+    </script>
+  <input type='hidden' name='${name}' id='${name}' />
+</%def>

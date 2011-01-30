@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+<%inherit file="business_signup.html" />
+<%def name="title()">${_(u'הרשמת לקוחות')}</%def>
+<%def name="explanation()">${_(u'הירשם פה כדי לקבל עדכונים אודות שליחים ועסקים חדשים באיזורך!')}</%def>
+<%def name="form_fields()">
+<fieldset>
+  <legend>${_(u'פרטים לביצוע משלוח')} - <b>${_(u'ניתן להשאיר ריק')}</b></legend>
+  <div><label for='phone'>${_(u'טלפון')}</label> ${h.text('phone',c.act.phone,dir='ltr')}</div>
+  <div><label for='address'>${_(u'כתובת')}</label> ${h.text('address',c.act.address)}</div>
+</fieldset>
+</%def>

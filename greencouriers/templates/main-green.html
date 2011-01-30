@@ -1,0 +1,366 @@
+# -*- coding: utf-8 -*-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%doc><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></%doc>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+	<title>${self.title()}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/css/soft_green_style.css" />
+	${self.js_includes()}
+	${self.extra_script()}
+<link rel="stylesheet" href="/css/autocomplete.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="/css/accordion.css" type="text/css" media="screen" charset="utf-8" />
+<style type='text/css'>
+  .error-message { color:red;  }
+</style>
+
+</head>
+<body dir=${self.directionality()}>
+<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+  
+	<div class="conteneur">
+	  ${self.header()}
+		<div class="centre" dir=rtl>
+		  ${self.main_content()}
+		</div>
+
+		<div class="pied">
+		  <div style='float:right'>
+		    <a href='http://www.python.org'><img alt='לוגו של פייתון' src='/images/powered-by/python-powered.png' /></a>
+		    <a href='http://www.pylonshq.com'><img alt='לוגו של פיילונס' src='/images/powered-by/pylons-powered-02.png' /></a>
+		    <a href='http://www.waze.co.il/'><img alt='לוגו של וייז' src='/images/powered-by/waze.gif' style='height:40px' /></a>
+		    <a href='http://www.openlayers.org/'><img alt='לוגו של אופנליירס' src='/images/powered-by/openlayers-logo.jpg' style='height:40px' /></a>
+		    <a href='http://www.postgresql.org/'><img alt='לוגו של פוסטגרס' src='/images/powered-by/powered-by-postgresql.jpg' style='height:40px' /></a>
+		  </div>
+		  תכנון ופיתוח: <a href='http://www.guyromm.com/'>גיא רום</a><br />עיצוב באדיבות <a rel='nofollow' href="http://nicolas.freezee.org" target="_BLANK">Nicolas Fafchamps</a>
+		</div>
+
+
+	</div>
+<script type="text/javascript">  
+	FB.init("fc157f2b65eff5d216ca6bd87f6a1746", "/xd_receiver.htm");  
+	</script> 
+<script type='text/javascript'>
+  //horrible MSIE hack to work with OpenLayers.
+if (Prototype.Browser.IE) $$('body')[0].dir='ltr'; 
+</script>
+<%doc>analytics</%doc>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7578178-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
+<%def name="header()">
+		<div class="menu" dir='rtl'>
+			<ul class="menu-list">
+				<li><a href="${url.current(controller='courier_signup')}">הרשמה לשליחים</a></li> 
+				<li><a href="${url.current(controller='business_signup')}">הרשמה לעסקים</a></li> 
+				<li><a href="${url.current(controller='my_account')}">החשבון שלי</a></li>
+				<li class='whity'><fb:login-button length='short' autologoutlink='true'></fb:login-button></li>
+			</ul>
+		</div>
+
+    <a href='/'><div class="header">
+    <%doc><span class="header-title">השליחים הירוקים</span><br /></%doc>
+    <%doc><span class="header-title-two">של תל אביב - יפו באופניים</span></%doc>
+    </div></a>
+</%def>
+<%def name="extra_script()"></%def>
+    <%def name="location_picker(id,start_marking_area=False,start_marking_marker=False,class_name='freemap',feature_added_cb=None,obj_global=True,existing_area=None,existing_marker=None,city_search=False,street_search=False,markers_layer=False,width=640,height=300,style=None,center_on_marker=False,navigable=True)">
+<% 
+if style: 
+ styleexp="styles['%s']"%style
+else: 
+ styleexp='null'
+%>
+    <div id="${class_name}_container" style='text-align:left' dir='ltr'><%doc>DIRTY HACK</%doc>
+    <div class="${class_name}" dir='ltr' style='width:${width}px;height:${height}px' id="${id}"></div>
+    </div>
+<script type='text/javascript'>
+    var styles={business:{fillColor:'red',fillOpacity:0.2,pointRadius:5,strokeWidth:1,strokeColor:'blue',graphicZIndex:1000}
+		,courier:{fillColor:'green',fillOpacity:0.2,pointRadius:5,strokeWidth:1,strokeColor:'blue',graphicZIndex:1000}}
+
+    % if obj_global:
+var ${id};
+% endif
+
+function ${id}_pan_to_vectors()
+{
+    //this code makes the map contain the whole joovce
+    var ve = ${id}.vectors.getDataExtent();
+    if (!ve)  return;
+    ${id}.map.setCenter(ve.getCenterLonLat());
+    //alert('extent:'+${id}.map.getExtent());    alert('vector bounds:'+ve);
+    var panned=0;
+    while (${id}.map.getExtent().containsBounds(ve,false))
+    {
+	var mapzoom = ${id}.map.getZoom() + 1;
+	${id}.map.setCenter(ve.getCenterLonLat(),mapzoom);
+	panned++; if (panned>15) return;
+    }
+    while (!${id}.map.getExtent().containsBounds(ve,false))
+    {
+	var mapzoom = ${id}.map.getZoom() - 1;
+	//alert('rezooming to '+mapzoom);
+	${id}.map.setCenter(ve.getCenterLonLat(),mapzoom);
+	panned++; if (panned>15) return;
+    }
+}
+
+<%doc>function iehackon() {
+  if (Prototype.Browser.IE)
+	      {
+		  $$('body')[0].dir='ltr';
+	      }
+}
+function iehackoff() {
+  if (Prototype.Browser.IE)
+	      {
+		  $$('body')[0].dir='rtl';
+	      }
+}</%doc>
+Event.observe(window,'load',function() {
+	% if not obj_global:
+    var\
+    % endif
+    <%import simplejson %>
+	${id} = createEmbeddedMap($("${id}"),${simplejson.dumps(navigable)});
+
+    ${id}.polyctl = new OpenLayers.Control.DrawFeature(${id}.vectors,OpenLayers.Handler.Polygon);
+    ${id}.polyctl.handler.style=${styleexp|n};
+    ${id}.map.addControl(${id}.polyctl);
+    % if feature_added_cb:
+    ${id}.polyctl.featureAdded = ${feature_added_cb}
+    % endif
+    % if start_marking_area:
+    ${id}.polyctl.activate();    
+    % endif
+
+	  
+
+    //${id}.map.raiseLayer(${id}.polyctl,5);
+
+
+% if existing_area:
+    // existing area ${existing_area}
+    <% import string %>
+	var points=[${string.join([('new OpenLayers.Geometry.Point(%f,%f)'%(p.pos_lon,p.pos_lat)) for p in existing_area.points],",")}];
+    ${id}.feature = new OpenLayers.Feature.Vector(new OpenLayers.Geometry.Polygon(new OpenLayers.Geometry.LinearRing(points)),null,${styleexp|n}); 
+    ${id}.vectors.addFeatures([${id}.feature]);	
+
+    ${id}_pan_to_vectors();
+
+    % endif
+
+
+	% if existing_marker or markers_layer:
+    ${id}.markers = new OpenLayers.Layer.Markers("Marker");
+    ${id}.map.addLayer(${id}.markers);
+    % endif
+
+	% if existing_marker:
+    var icon = new OpenLayers.Icon('/js/img/marker-blue.png'); //size,offset
+    ${id}.marker = new OpenLayers.Marker(new OpenLayers.LonLat(${existing_marker.points[0].pos_lon},${existing_marker.points[0].pos_lat}),icon)
+    ${id}.markers.addMarker(${id}.marker);    
+	% if center_on_marker:
+    ${id}.map.setCenter(new OpenLayers.LonLat(${existing_marker.points[0].pos_lon}, ${existing_marker.points[0].pos_lat}), 7);    
+    % endif
+% endif
+
+
+	  //$('${id}').observe('openlayers:ready',function() { 
+
+	  //});
+    //${id}.polyctl.activate();
+    $("${id}").fire('openlayers:ready');
+});
+</script>
+% if city_search:
+עיר - ${h.text('city',id='city',dir='rtl')}
+% endif
+% if street_search:
+רחוב - ${h.text('street',id='street')}
+% endif
+% if city_search or street_search:
+${h.submit('center_map',u'מרכז מפה',id='center_map')}
+<br />
+<script type='text/javascript'>
+    function center_map()
+{
+	if ($('city')) var city = $('city').value;
+	if ($('street')) var street = $('street').value;
+	if (street)
+	{
+	    var url = "${url.current(action='search_street',city_name='CITY',street_name='STREET')}".replace('CITY',encodeURIComponent(city)).replace('STREET',encodeURIComponent(street))
+	    var zoom=safeArgs.zoom+6
+	}
+	else
+	{
+	    var url = "${url.current(action='search_city',city_name='CITY')}".replace('CITY',encodeURIComponent(city));
+	    var zoom=safeArgs.zoom+4
+	}
+    //alert('going to '+url);
+	var r = new Ajax.Request(url,{onSuccess:function(t) {
+	    //alert(t.responseText);
+	    var resp = t.responseText.evalJSON();
+	    if (resp.successful)
+	    {
+		//alert('centering map on '+resp.result.center.lon+','+resp.result.center.lat);
+		${id}.map.setCenter(new OpenLayers.LonLat(resp.result.center.lon, resp.result.center.lat), zoom);
+	    }}});
+}
+Event.observe(window,'load',function() { 
+    $('center_map').observe('click',function(e) {
+	Event.stop(e);
+
+	center_map();
+
+    });
+
+				     
+% if city_search:
+function city_script(inp) 
+			    {			    
+	var rt =  "${url.current(action='city_autocomplete',city_name='TOKEN')}";
+				rt =  rt.replace('TOKEN',encodeURIComponent(inp));
+	return rt
+    }
+var city_options = {
+    script:city_script,
+    json:true,
+    shownoresults:true,
+    maxresults:16
+}
+
+
+	      var json=new AutoComplete('city',city_options);
+% endif
+% if street_search:
+    $('city').observe('change',function() {
+	$('street').value='';
+    });
+    $('city').observe('blur',function() {
+	if ($('city').value) center_map();
+    });
+    $('street').observe('blur',function() {
+	if ($('city').value && $('street').value) center_map();
+    });
+function street_script(inp) 
+        {
+	    var rt = "${url.current(action='street_autocomplete',city_name='CITY',street_name='STREET')}";
+	    rt = rt.replace('CITY',encodeURIComponent($('city').value));
+	    rt = rt.replace('STREET',encodeURIComponent($('street').value));
+	    //alert('going to '+rt);
+	    return rt;
+	}
+    var street_options = {
+	script:street_script,
+	json:true,
+	shownoresults:true,
+	maxresults:16
+    }
+    var json2=new AutoComplete('street',street_options);
+% endif
+	     });
+</script>
+% endif
+</%def>
+<%def name="js_includes()">
+
+<%doc><script type='text/javascript' src='http://www.openlayers.org/api/OpenLayers.js'></script></%doc>
+    <script type='text/javascript' src='/js/OpenLayers.js'></script>
+    <script type="text/javascript" src="http://www.waze.co.il/js/he.js"></script>
+    <script type='text/javascript' src='/js/freemap-test.js'></script>
+
+    <script type='text/javascript' src='/js/prototype.js'></script>
+    <%doc><script type='text/javascript' src='/js/accord/accordion/javascript/prototype.js'></script></%doc>
+    <script type='text/javascript' src='/js/sc/effects.js'></script>
+    <%doc><script type='text/javascript' src='/js/accord/accordion/javascript/effects.js'></script></%doc>
+    <script type='text/javascript' src='/js/accordion.js'></script>
+    <script type='text/javascript' src='/js/autocomplete.js'></script>
+
+</%def>
+    <%def name="schedule_selector(name,remove_link=False,data=None)">
+<div id='${name}'>
+    <input type='hidden' name="${name}" />
+    פנוי משעה ${h.text('%s.h.fr'%name,(data and data.hours[0].time_from.strftime('%H:%M')) or '10:00',size=3,class_='hour')} ועד-${h.text('%s.h.to'%name,(data and data.hours[0].time_to.strftime('%H:%M')) or '19:00',size=3,class_='hour')} בימים:
+    % for wd in c.weekdays:
+<% wdl = '%s.d.%d'%(name,wd) 
+if data:
+   weekdays = [wee.weekday for wee in data.weekdays]
+else:
+   weekdays = None
+%>
+    <label for="${wdl}">${c.weekdays[wd]}</label> ${h.checkbox(wdl,1,((weekdays and wd in weekdays) or (not data and wd in range(1,6)) or False),id=wdl)}
+% endfor
+    - <a class='remove_schedule_selector' id="${name}_remove" href='#'>להסיר שורה</a>
+</div>
+</%def>
+<%def name="directionality()">rtl</%def>
+<%def name="hours_selector()">
+    <div id='schedules'>    
+    <form:error name="schedule" />
+    ניתן לציין שעות עם או ללא דקות (HH או HH:MM) <a href='#' id='add_schedule'>+ להוסיף שורה</a><br />
+    <% if c.schedules_amt: schedules_amt=c.schedules_amt
+else: schedules_amt = 1 %>
+    % for si in range(1,schedules_amt+1):
+    <% 
+       try:
+          data= c.schedules[si-1]
+       except IndexError:
+          data=None
+       
+       %>
+
+    ${self.schedule_selector('schedule-%d'%si,remove_link=True,data=data)}
+    % endfor
+    </div>
+
+    <script type='text/javascript'>
+    var schd_counter=${schedules_amt};
+function attach_schedule_remove_event(e) {
+e.observe('click',function(evt) {
+    Event.stop(evt);
+    var el = Event.element(evt);
+    if (el.id=='schedule-1_remove') 
+    {
+	Effect.Pulsate(el);
+	return;
+    }
+    var mt = /^(.*)_remove/;
+    var res = mt.exec(el.id);
+    if (res[1])
+	$(res[1]).remove();
+});
+}
+
+    $('add_schedule')\
+.observe('click',function(e) 
+	 { Event.stop(e);
+	   schd_counter++;
+	   var defid='schedule-1';
+	   var html = '<div id="'+defid+'">'+$(defid).innerHTML+'</div>';
+	   var rg = /(schedule-1)/mg;
+	   var replacement = 'schedule-'+(schd_counter);
+	   html = html.replace(rg,replacement);
+	   html = html.replace(/checked/mg,'');
+           var par = $('schedules').insert(html)
+	   var remlink = $(replacement+'_remove');
+	   attach_schedule_remove_event(remlink);
+	 });
+$$('.hour').each(function(e) { e.observe('change',function(evt) {
+    var el = Event.element(evt);
+    if (!/^([0-9\:]+)$/.match(el.value))
+	el.value='';
+}); });
+$$('.remove_schedule_selector').each(function(e) {     attach_schedule_remove_event(e);});
+    </script>
+
+</%def>

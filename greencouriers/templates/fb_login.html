@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">כניסה למערכת</%def>
+<%def name="main_content()">
+<div class='main'>
+<h1 class='repl' style='width:100%;text-align:center'>${_(u'זיהוי נדרש')}</h1>
+<p>${_(u'על מנת להשתמש בתכונה זו, עליך להזדהות. השתמשנו במערכת הזיהוי של פייסבוק בכדי לפשט את השימוש באתר. כמו כן, באפשרותך להזדהות או להירשם באמצעות חשבון דוא"ל רגיל.')}
+
+</p>
+
+<div class='logincolumn'>
+
+<fb:login-button length='long' onlogin="location.href='${url.current(controller='auth',action=request.params.get('return_action') and request.params.get('return_action') or 'index' )}';"></fb:login-button> <br />
+${_(u'לחץ על הכפתור על מנת להזדהות במערכת באמצעות חשבון הפייסבוק שלך.')}
+</div>
+
+<div class='logincolumn' style='float:left'>
+<%
+import re
+hidestyle='display:none';login_style='';signup_style=''
+if request.params.get('return_action')=='signup'\
+   or request.urlvars['action']=='signup'\
+   or re.compile('/signup$').search(request.url): mode='signup'
+else: mode='login'
+
+%>
+% if not c.user:
+${c.message}
+${h.form(url.current(controller='auth',action='login'),id='auth_frm')}
+<input type='hidden' name="return_url" value="${url.current(controller=request.urlvars['controller'],action=request.params.get('return_action') and request.params.get('return_action') or 'index')}" />
+<div id='email_field' class='formfield'>
+  <label for=email>${_(u'דוא"ל')}</label> ${h.text('email')}
+</div>
+<div id='name_field' class='formfield'>
+  <label for=name>${_(u'שם')}</label> ${h.text('name')}
+</div>
+<div id='password_field' class='formfield'>
+  <label for=password>${_(u'סיסמא')}</label> ${h.password('password')}</label>
+</div>
+<div id='repeat_password_field' class='formfield'>
+  <label for=repeat_password>${_(u'חזרה על סיסמא')}</label> ${h.password('repeat_password')}</label>
+</div>
+<div id='login_field' class='formfield'>
+  ${h.submit('login',_(u'כניסה'))}
+  <a class='sarrow' id='signup_lnk' href="#">${_(u'לטופס הרשמה')}</a>
+  <a class='sarrow' id='reset_lnk' href="#">${_(u'איפוס סיסמה')}</a>
+</div>
+<div id='signup_field' class='formfield'>
+  ${h.submit('signup',_(u'הרשם'))}
+  <a class='sarrow' id='login_lnk' href="#">${_(u'לכניסה עם חשבון קיים')}</a>
+</div>
+<div id='reset_field' class='formfield'>
+  ${h.submit('reset',_(u'אפס סיסמה'))}
+  <a class='sarrow' id='login2_lnk' href='#'>${_(u'לכניסה עם חשבון קיים')}</a>
+</div>
+${h.end_form()}
+% else:
+${(_(u'Currently logged in as %s')% c.user.name)} <a href="${url.current(controller='auth',action='logout')}">${_(u'Log out')}</a>
+% endif
+<script type='text/javascript'>
+function signup_mode() {
+$$('.formfield').each(function(el) { el.hide(); });
+fields = ['email','name','password','repeat_password','signup']
+for (i=0;i<fields.length;i++) 
+	     $(fields[i]+'_field').show();
+	     $('auth_frm').action="${url.current(controller='auth',action='signup')}";
+}
+function login_mode() {
+$$('.formfield').each(function(el) { el.hide(); });
+fields = ['email','password','login']
+for (i=0;i<fields.length;i++) 
+	     $(fields[i]+'_field').show();
+	     $('auth_frm').action="${url.current(controller='auth',action='login')}";
+}
+function reset_mode() {
+$$('.formfield').each(function(el) { el.hide(); });
+fields = ['email','reset']
+for (i=0;i<fields.length;i++) 
+	     $(fields[i]+'_field').show();
+	     $('auth_frm').action="${url.current(controller='auth',action='reset')}";
+}
+Event.observe(window,'load',function() {
+
+$('signup_lnk').observe('click',function(e) {
+Event.stop(e);signup_mode();
+});
+
+$('reset_lnk').observe('click',function(e) {
+Event.stop(e);reset_mode();
+});
+
+$('login_lnk').observe('click',function(e) {
+Event.stop(e);login_mode();
+});
+$('login2_lnk').observe('click',function(e) {
+Event.stop(e);login_mode();
+});
+${mode}_mode();
+});
+</script>
+</div>
+${_(u'לאחר הזיהוי, תועבר לעמוד בו ביקשת לצפות.')}
+
+</div>
+</%def>

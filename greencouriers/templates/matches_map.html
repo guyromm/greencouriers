@@ -1,0 +1,105 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">${_(u'התאמות עבור %s')%c.act}</%def>
+<%def name="float_misc()">
+    <div class='left-bar wide'>
+    ${self.activities_map()}
+    </div>
+</%def>
+<%def name="main_heading()">
+<h2 class='repl'>${_(u'התאמות')}</h2>
+<h3>${self.heading()}</h3>
+</%def>
+<%def name="main_content()">
+<div class='main thin'>
+${self.main_heading()}
+<a href='${url.current()}?print=1'>${_(u'גרסת טבלה / הדפסה')}</a>
+${self.show_items(c.service_matches)}
+</div>
+</%def>
+<%def name="item_content(cm)">
+% if hasattr(cm,'area_vol') and cm.area_vol and float(cm.ir_res)==100:
+<% irres = (c.minvol / cm.area_vol)*100 %>
+% else:
+<% irres= cm.ir_res %>
+% endif
+${_(u'התאמת איזור')}: ${"%d"%float(irres)}% 
+    % if c.show_sched:
+    <br />${_(u'התאמת שעות')}: ${"%d"%float(cm.so_res)}%
+    % endif    
+    % if True in [sc.isnow() for sc in cm.activity.schedules]:
+    <b id='active_now'>${_(u'פעיל עכשיו!')}</b><br />
+    % endif
+    <br /><a href="${url.current(controller=cm.activity.activity_type,id=cm.activity.id)}">${_(u'קישור')}</a>
+</%def>
+<%def name="show_items(items,is_match=True)">
+<dl class='matches'>
+  % for cm in items:
+<%
+   if is_match: it=cm.activity
+   else: it = cm
+%>
+  <dt id='activity_${it.id}_${it.area_id}_${it.marker_id}'>${it}</dt>
+  <dd style='display:none'>
+    ${self.item_content(cm)}
+  </dd>
+  % endfor
+</dl>
+<script type='text/javascript'>
+  <%doc>script to allow (un)fold the definition list</%doc>
+    var dt_clicked = function(ev,el,novec) {
+	if (!el)
+	    el = Event.element(ev);
+//alert(el+' clicked');
+  var dd = el.next('dd');
+  if (dd.style.display=='none') 
+  {
+      var dont_call_marker=false;
+el.addClassName('expanded');
+//alert('showing');
+      dd.style.display='';
+//alert('foo');
+      //new Effect.SlideDown(dd);
+      var res = /^activity_([0-9]+)_([0-9]*)_([0-9]*)$/.exec(el.id);
+      var arr = news.vectors.features.toArray();
+      if (novec) 
+{
+console.log('returning due to novec');
+return;
+}
+      //searching for the right vector.
+      for (var i=0;i<arr.length;++i) {
+	  //alert('comparing '+res[2]+' against '+arr[i].area_id);
+	  if (arr[i].area_id==res[2])
+	  {
+	      react_to_click(arr[i]);
+	      dont_call_marker=true;
+	      break;
+	  }
+      }
+      if (!dont_call_marker)
+      {
+	  eval('marker_'+res[3]+'_mousedown()');
+      }
+  }
+  else 
+  {
+  el.removeClassName('expanded');
+  dd.style.display='none';
+  //new Effect.SlideUp(dd);
+  }
+  
+  };
+  Event.observe(window,'load',function() {
+  $$('.matches dt').each(function(el) {
+  el.observe('click',dt_clicked);
+  });
+});
+</script>
+<style type='text/css'>
+.main-container {
+min-height:500px;
+}
+</style>
+${self.wallpost_logic()}
+</%def>

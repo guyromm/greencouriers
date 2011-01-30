@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+<% from pylons import config %>\
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<style type='text/css'>
+thead { background-color:#999; }
+.even { background-color:#ddd; }
+</style>
+</head>
+<body dir=${_('dir')}>
+<A HREF="javascript:window.print()">${_(u'לחץ להדפסה')}</A>
+
+  <h2>${_(u'רשימת התאמות עבור')} ${c.act}</h2>
+
+  <table>
+    <thead>
+      <tr>
+	<td>${_(u'פעילות')}</td>
+	<td>${_(u'התאמת איזור')}</td>	
+      <td>${_(u'התאמת שעות')}</td>
+      <td>${_(u'תאריך הרשמה')}</td>
+      <td>${_(u'הוסף ע"י')}</td>
+      <td>${_(u'ציון ממוצע')}</td>
+      <td>${_(u'טלפון')}</td>
+      <td>${_(u'פייסבוק')}</td>
+      <td>${_(u'שעות וימי פעילות')}</td>
+	</tr>
+    </thead>
+<% counter=0 %>
+  % for sm in c.service_matches:
+% if counter % 2 == 0:
+    <tr class='even'>
+% else:
+<tr>
+% endif
+<% counter+=1 %>
+
+      <td><a href="${url.current(controller=sm.activity.activity_type,action='index',id=sm.activity.id)}">${sm.activity}</a></td>
+
+      <td>${'%2.2f'%float(sm.ir_res)}%</td>
+
+      <td>${'%2.2f'%float(sm.so_res)}%</td>
+
+      <td>${sm.activity.entry_stamp.date()}</td>
+      
+     <td>${sm.activity.user}</td>
+
+      % if len(sm.activity.ratings):
+      <% 
+	 sum=0
+	 for rt in sm.activity.ratings:
+	   sum+= rt.rating
+	 avg = sum/len(sm.activity.ratings)
+	 %>
+
+
+
+      <td>${avg} על סמך ${len(sm.activity.ratings)} מדרגים</td>
+      % else:
+      <td>--</td>
+      % endif
+      
+      
+
+      <td>${sm.activity.phone}</td>
+
+      % if sm.activity.user.fb_uid:
+
+      <td><a href="http://www.facebook.com/profile.php?id=${sm.activity.user.fb_uid}">${sm.activity.user.fb_uid}</a></td>
+      % else:
+      <td>--</td>
+      % endif
+
+      <td>
+      <%
+if len(sm.activity.schedules)>1: 
+      bullet=True
+else: 
+      bullet=False
+	 %>
+      % if bullet:
+      <ul>
+	% endif
+	<% import string %>
+    % for sc in sm.activity.schedules:
+	% if bullet:
+    <li>
+      % endif
+      ${_(u'בין')} ${sc.hours[0].time_from} ל-${sc.hours[0].time_to} ${_(u'בימים')} ${string.join([c.weekdays[sc.weekday] for sc in sc.weekdays],' , ')}
+      % if bullet:
+    </li>
+    % endif
+    % endfor
+    % if bullet:
+      </ul>
+% endif
+    </td>
+
+</tr>
+  % endfor
+</table>
+
+</body>
+</html>

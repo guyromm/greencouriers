@@ -1,0 +1,209 @@
+/*
+Primary Color:
+	9B8578
+	746861
+	653E27
+	CDB7AA
+	CDBDB4
+*/
+body {
+    overflow:hide;
+    background-color:#e9f4f4;
+    margin:0px;
+    font-family:Arial;
+    text-align:right;
+}
+.main-container {
+width:890px;
+    margin:0 auto;
+}
+/* Robin Hitchcock - Zach */
+a img { border:none; }
+.top-separator a {
+    color:#9b8578;
+}
+.top-separator {
+    color:white;
+    text-align:left;
+    height:125px;
+    background:#e9f4f4 url('/images/adi/up.gif') repeat-x scroll 240px -50px;
+}
+.header-container {
+    background-color:white;
+}
+.header {
+    height:90px;
+    background-color:white;
+    width:890px;
+    margin:auto;
+}
+.logo {
+    float:right;
+    margin-top:18px;
+    margin-right:20px;
+    position:relative;
+}
+.button-area {
+    text-align:left;
+    padding-top:30px;
+    padding-left:10px;
+    float:left;
+    width:500px;
+    height:100%;
+}
+
+a.button {
+    background: transparent url('/images/adi/bg_button_a30px.png') no-repeat scroll top right;
+    font:normal 13px Miriam;
+    color: white;
+    display: block;
+    float: right;
+    height: 30px;
+    margin-right: 6px;
+    padding-right: 18px;
+    text-decoration: none;
+}
+
+a.button span {
+    background: transparent url('/images/adi/bg_button_a30px.png') no-repeat;
+    display: block;
+    line-height: 20px;
+    padding: 1px 0 9px 18px;
+} 
+a.button:hover {
+color:#e9f4f4;
+}
+
+
+.main,.main-wide,.left-column {
+    margin-right:0px;
+    margin-top:-55px;
+    float:right;
+    padding:10px;
+    padding-bottom:30px;
+    background:white url('/images/adi/flach-small.png') repeat-x scroll bottom left;
+    color:#9b8578;
+    direction:rtl;
+}
+.left-column {
+    float:left;
+    width:26%;
+    margin-left:0px;
+}
+.main {
+    width:68%;
+}
+
+.main-wide {
+    width:870px;
+}
+
+h3 {
+	font-family:'narkisblockblack-regular';
+    background-color:#cdb7aa;
+    color:white;
+    padding-right:15px;
+}
+.map-search {
+    color:white;
+    background-color:#cdb7aa;
+    float:left;
+    padding:3px;
+}
+.map-search .button {
+    float:left;
+    clear:none;
+}
+ul { 
+    padding-right:13px; 
+    list-style-image:url('/images/adi/weel.png'); 
+   }
+dl dt {
+    font-weight:bold;
+}
+dl dd {
+    margin-right:10px;
+}
+
+.rating_icon,.rating_icon_selected {
+    height:35px;
+    width:52px;
+    background-image:url('/images/adi/trike_gray.gif');
+    display:block;
+    float:right;
+    cursor:pointer;
+}
+.rating_icon:hover,.rating_icon_selected {
+    background-image:url('/images/adi/trike.gif');
+}
+.footer {
+    clear:both;
+    width:100%;
+    text-align:center;
+}
+.freemap a {
+    color:#9b8578;
+    text-decoration:none;
+}
+fieldset {
+    padding-top:20px;
+    margin-bottom:30px;
+    border:1px solid #653e27;
+}
+fieldset div {
+    margin-bottom:0.5em;
+}
+fieldset div label {
+    width:100px;
+    display:inline-block;
+    text-align:left;
+    }
+input,textarea {
+    border:1px solid #653e27;
+    padding:4px;
+}
+.checkbox-lbl {
+    width:8px;
+}
+.w30 { 
+    width:30px;
+}
+.w150 {
+    width:100px;
+}
+
+/* inline buttons */
+.inline-button {
+font-size:12px;
+}
+.inline-button {
+   _width:12em;
+   /*font: bold 65%/1 Verdana, sans-serif;*/
+   margin: 0 0.2em; padding: 0.1em 0; _padding:0;
+   border: 1px solid black;
+   white-space:nowrap;
+   text-decoration: none;
+   vertical-align:middle;
+   background: #9b8578;
+   color: black;
+   }
+.inline-button em {
+   _width:1em; _cursor:hand;
+   font-style: normal;
+   margin:0; padding: 0.1em 0.5em;
+   background: #88cce1;
+   color: white;
+   }
+.inline-button span {
+   _width:1em; _cursor:hand;
+   margin:0; padding: 0.1em 0.5em 0.1em 0.3em;
+   }
+.inline-button:hover {
+   background: #653e27;
+   color: white;
+   }
+.inline-button:hover em {
+   background: #e9f4f4;
+   color: white;
+   }
+/* end inline buttons */

@@ -1,0 +1,323 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/main.html" />
+<%def name="js_includes()">
+    <script type='text/javascript' src='/js/prototype.js'></script>
+    <script type='text/javascript' src='http://dev.openlayers.org/nightly/OpenLayers.js'></script>
+    <script type="text/javascript" src="http://www.waze.co.il/js/he.js"></script>
+</%def>
+<%def name="extra_script()">
+<script type='text/javascript'>
+% if c.autodraw_coords:
+var autodraw_coords=${c.autodraw_coords|n};
+% else:
+var autodraw_coords=null;
+% endif
+
+
+ //==========================================================
+OpenLayers.Map.FreeMapIL = 
+  OpenLayers.Class(OpenLayers.Map, 
+  {
+	
+	initialize: function (div, options){
+
+		OpenLayers.Lang.setCode("he");
+		OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+		//call OpenLayers.Map super ...
+		OpenLayers.Map.prototype.initialize.apply(this, arguments);
+		
+		//for some odd reason I can't seem to be able to override mapExtent when my value appears in the options (Map initialize
+		//ignores my value) thus I'll override it here!
+		this.maxExtent =  new OpenLayers.Bounds(33.75,28.125,36.5625,33.75);
+
+		//add base layer
+	    var layer = new OpenLayers.Layer.WMS(OpenLayers.Lang.translate("israel-base"), 
+			[ "http://t5.maps.freemap.co.il/wms-c/", 
+			  "http://t6.maps.freemap.co.il/wms-c/", 
+			  "http://t7.maps.freemap.co.il/wms-c/", 
+			  "http://t8.maps.freemap.co.il/wms-c/"
+			], 
+			{layers: 'base', format: 'image/png' },
+			{'attribution':'<a href="http://www.freemap.co.il">FreeMap Israel&copy;</a>'});
+
+		this.addLayer(layer);
+
+	    this.addControl(new OpenLayers.Control.Navigation());
+	    //this.addControl(new OpenLayers.Control.Scale());
+	    this.addControl(new OpenLayers.Control.MousePosition());
+	    //this.addControl(new OpenLayers.Control.Permalink());
+	    //this.addControl(new OpenLayers.Control.LayerSwitcher());
+		
+		//add overview layer
+		var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS", 
+		"http://labs.metacarta.com/wms/vmap0", {layers: 'basic'} );
+		var options = {
+		    layers: [wms],
+		    minRatio: 8,
+		    maxRatio: 256
+		};
+	    //var overview = new OpenLayers.Control.OverviewMap(options);
+	    //this.addControl(overview);
+		
+		//add error report button
+	    /*var reportErrorBtn = new OpenLayers.Control.FMButton(
+			{
+				displayClass:"mapButton",
+				title:OpenLayers.Lang.translate("reportErrorBtnTooltip"),
+				label:OpenLayers.Lang.translate("reportErrorBtnLabel"),
+				onClick: function(evt) {
+					res = confirm("? "+"כדי לדווח על הטעות"+" Freemap "+"האם ברצונך לגלוש לאתר");
+					if(res==true){
+					
+						//get the permalink href from the map
+						var href = (this.map.getControlsByClass("OpenLayers.Control.Permalink")[0]).element.href;
+						
+						//get the parameters from the href
+						params = href.split("?")[1];
+						
+						//navigate to the map page with the appropriate params
+						window.open("/map.html?mistake=true&"+params);
+					}
+				}
+			});
+		this.addControl(reportErrorBtn);*/
+		
+		if (!this.getCenter()) this.zoomToMaxExtent();
+	},
+	
+	//add the attribution control before init or the display class will not affect the attrib
+	//OpenLayers only so-so ...
+	//init other controls in init or IE6 will cry
+      controls: [new OpenLayers.Control.Attribution({displayClass:"attrib"})],
+      maxResolution: .010986328125,
+       
+	numZoomLevels: 11,
+       
+	/** @final @type String */
+	CLASS_NAME: "OpenLayers.Map.FreeMapIL"
+});
+
+OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {                
+                defaultHandlerOptions: {
+                    'single': true,
+                    'double': false,
+                    'pixelTolerance': 0,
+                    'stopSingle': false,
+                    'stopDouble': false
+                },
+
+                initialize: function(options) {
+                    this.handlerOptions = OpenLayers.Util.extend(
+                        {}, this.defaultHandlerOptions
+                    );
+                    OpenLayers.Control.prototype.initialize.apply(
+                        this, arguments
+                    ); 
+                    this.handler = new OpenLayers.Handler.Click(
+                        this, {
+                            'click': this.trigger
+                        }, this.handlerOptions
+                    );
+                }, 
+
+                trigger: function(e) {
+                    var lonlat = embeddedMap.getLonLatFromViewPortPx(e.xy);
+		    //alert('about to put marker');
+		    markers_layer.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(lonlat.lon,lonlat.lat)));
+                    //alert("You clicked near " + lonlat.lat + " N, " +                                              + lonlat.lon + " E");
+                }
+	    });
+
+var safeArgs = {}
+var embeddedMap;
+var DEFAULT_LON = 34.765;
+var DEFAULT_LAT = 32.058;
+function createEmbeddedMap() {
+
+    OpenLayers.ProxyHost = '/proxy/?url='; 
+    // ----
+    // TODO: Handle all this parsing better.
+
+    //read URL parameters
+    params = OpenLayers.Util.getParameters();
+
+    var DEFAULT_ZOOM_LEVEL = 3;
+    var DEFAULT_CONTROLS = ['panzoombar','mouse'];
+    var DEFAULT_LAYERS = ['freemap'];
+    var DEFAULT_MARK_CENTER = "false";
+
+    safeArgs.centerLat = params.lat ? 
+        params.lat : DEFAULT_LAT;
+    
+    safeArgs.centerLon = params.lon ? 
+        params.lon : DEFAULT_LON;
+
+    safeArgs.zoom = params.zoom ? parseInt(params.zoom) : DEFAULT_ZOOM_LEVEL;
+    
+    safeArgs.marker =  params.marker ? params.marker : DEFAULT_MARK_CENTER;
+
+    //need to read it to a String or the split below won't work
+    var controlsStr = new String(params.controls);
+    safeArgs.controls = params.controls ? 
+        controlsStr.split(",") : DEFAULT_CONTROLS;
+    
+     //need to read it to a String or the split below won't work
+    var layersStr = new String(params.controls);
+    safeArgs.layers = params.layers ? 
+        layersStr.split(",") : DEFAULT_LAYERS;
+    
+    safeArgs.data = params.data; // TODO: Make this "safe".
+
+    // -----
+    embeddedMap = new OpenLayers.Map.FreeMapIL("map");
+
+    //regular map
+    //embeddedMap = new OpenLayers.Map('map');var wmsLayer = new OpenLayers.Layer.WMS( "OpenLayers WMS","http://labs.metacarta.com/wms/vmap0?", {layers: 'basic'});   embeddedMap.addLayers([wmsLayer]);
+
+
+    for(var i = 0; i < safeArgs.controls.length; i++) {
+        switch(safeArgs.controls[i]) {
+            case 'panzoombar':
+                embeddedMap.addControl(new OpenLayers.Control.PanZoomBar());
+                break;
+            case 'panzoom':
+                embeddedMap.addControl(new OpenLayers.Control.PanZoom());
+                break;
+            case 'layerswitcher':
+                embeddedMap.addControl(new OpenLayers.Control.LayerSwitcher());
+                break;
+            case 'mouse':
+                embeddedMap.addControl(new OpenLayers.Control.MouseDefaults());
+                break;
+        }
+    }
+
+    for(var i = 0; i < safeArgs.layers.length; i++) {
+        switch(safeArgs.layers[i]) {
+            case 'openlayers':
+                embeddedMap.addLayer(
+                  new OpenLayers.Layer.WMS( "OpenLayers WMS", 
+                        "http://labs.metacarta.com/wms/vmap0", 
+                        {layers: 'basic'} )
+                  );
+                break;
+            case 'nasa': 
+                embeddedMap.addLayer(
+                    new OpenLayers.Layer.WMS("NASA Mosaic", 
+                       "http://wms.jpl.nasa.gov/wms.cgi",
+                       {"EXCEPTIONS" : "application/vnd.ogc.se_inimage",
+                        "format" : "image/jpeg",
+                        layers:"modis,global_mosaic"}
+                       ));
+                break;
+        }
+    }
+    embeddedMap.setCenter(new OpenLayers.LonLat(safeArgs.centerLon, safeArgs.centerLat), safeArgs.zoom);
+    vectors = new OpenLayers.Layer.Vector("Vector Layer");
+    embeddedMap.addLayers([vectors]);
+
+    /*if (safeArgs.marker == "true") {
+        var m = new OpenLayers.Layer.Markers("Marker");
+        m.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(safeArgs.centerLon, safeArgs.centerLat)));
+        embeddedMap.addLayer(m);
+    }*/
+    /*if (safeArgs.data) {
+        embeddedMap.addLayer(new OpenLayers.Layer.Text("Data", {location: safeArgs.data}));
+    }*/
+
+}
+
+var markers_layer;
+Event.observe(window,'load',function() {
+    createEmbeddedMap($('map'));
+    $('mark_area').observe('click',function(e) {
+	Event.stop(e);
+
+	polyctl = new OpenLayers.Control.DrawFeature(vectors,OpenLayers.Handler.Polygon,{handlerOptions:{freehand:true}});
+	embeddedMap.addControl(polyctl);
+	polyctl.featureAdded=function(a) { 	    $('poly_data').value = a.geometry.components[0].getComponentsString();	    a.destroy();	}
+	polyctl.activate();
+    });
+
+    var origin,point,points,ring,newpoly,pointFeature
+    $('put_poly').observe('click',function(e) {	Event.stop(e);
+	
+	origin = new OpenLayers.LonLat(DEFAULT_LON,DEFAULT_LAT);
+	point = new OpenLayers.Geometry.Point(origin.lon , origin.lat);
+						if (autodraw_coords)
+						{
+						    points = autodraw_coords;
+						    //alert('putting submitted points '+points+' on map');
+						}
+						else
+						    points = [point,new OpenLayers.Geometry.Point(origin.lon+0.01,origin.lat),new OpenLayers.Geometry.Point(origin.lon,origin.lat+0.01)]
+	ring = new OpenLayers.Geometry.LinearRing(points);
+	newpoly = new OpenLayers.Geometry.Polygon(ring);
+	//alert(newpoly.components[0].getComponentsString());
+	pointFeature = new OpenLayers.Feature.Vector(newpoly); 
+	vectors.addFeatures([pointFeature]);	
+    });
+
+    $('rem_poly').observe('click',function(e){ 	Event.stop(e);
+
+	pointFeature.destroy();
+    });
+    $('city').observe('change',function() {
+	url = "${url.current(action='search_address',id='TOKEN')}";
+	url = url.replace(/TOKEN/,$('city').value);
+	ar = new Ajax.Request(url,{'onSuccess':function(t,j) {
+	    var resp = t.responseText.evalJSON();
+	    if (resp.successful)
+	    {
+		//alert('woohoo'+t.responseText);
+		//alert('going to center map on '+resp.result.center.lon+','+resp.result.center.lat);
+		//alert(new OpenLayers.LonLat(resp.result.center.lon, resp.result.center.lat));
+		embeddedMap.setCenter(new OpenLayers.LonLat(resp.result.center.lon, resp.result.center.lat), safeArgs.zoom+4);
+		//alert('done');
+	    }
+	    /*else		alert('failed '+resp.reason);*/
+
+	}});
+    });
+    $('resize').observe('click',function(e) {
+	Event.stop(e);
+	$('map').style.width='800px';
+	$('map').style.height='800px';
+    });
+    $('put_marker').observe('click',function(e) { Event.stop(e);
+
+	if (!markers_layer) {
+	    markers_layer = new OpenLayers.Layer.Markers("Marker");
+	    embeddedMap.addLayer(markers_layer);
+
+	    var click = new OpenLayers.Control.Click();
+            embeddedMap.addControl(click);
+            click.activate();
+
+	}
+        markers_layer.addMarker(new OpenLayers.Marker(embeddedMap.getCenter()));
+
+    });
+//put a default polygon with page load
+    //$('put_poly').click();
+});
+
+
+</script>
+    </%def>\
+    <%def name="title()">Map test</%def>\
+    <%def name="main_content()">
+   ${h.form(url.current(action='index'),method='post')}
+${h.select('city',None,[u'תל אביב - יפו',u'ירושלים',u'אשדוד',u'קרית שמונה',u'חיפה',u'לוד'],id='city')}
+ <div id="map" dir=ltr style="width:500px;height:300px"></div>
+    ${h.text('poly_data',c.pd,id='poly_data',)}
+    ${h.submit('mark_area',u'התחל לסמן',id='mark_area')}
+${h.submit('put_poly',u'הנח פוליגון תכנותית על המפה',id='programatically_put_polygon',id='put_poly')}
+${h.submit('rem_poly',u'מחק פוליגון שהונח תכנותית',id="programatically_del_polygon",id='rem_poly')}
+${h.submit('resize',u'שנה גודל',id='resize')}
+${h.submit('put_marker',u'מרקר במרכז המפה',id='put_marker')}
+    ${h.submit('submit',u'שלח לשרת')}
+ ${h.submit('draw_marker',u'שים מרקר')}
+    ${h.end_form()}
+</%def>\
+

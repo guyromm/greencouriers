@@ -1,0 +1,26 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/main.html" />
+<%def name="title()">תצוגת ערים</%def>
+<%def name="main_content()">
+${self.location_picker('cities',markers_layer=True)}
+<script type='text/javascript'>
+  Event.observe(window,'load',function() {
+  
+  var icon = new OpenLayers.Icon('/js/img/marker-blue.png'); //size,offset
+  % for ct in c.cities:
+  var ll = new OpenLayers.LonLat(${ct.lon},${ct.lat});
+  var marker = new OpenLayers.Marker(ll)
+  cities.markers.addMarker(marker);
+  var ic_${ct.id} = icon.clone();
+  var popup = new OpenLayers.Popup.FramedCloud(id="${ct.name}",
+  lonlat=ll,
+  contentSize=new OpenLayers.Size(50,50),
+  contentHTML="${ct.name}- ${ct.population}",
+  anchor=ic_${ct.id},
+  closeBox=true);
+  cities.map.addPopup(popup,false);
+
+  % endfor
+  });
+</script>
+</%def>

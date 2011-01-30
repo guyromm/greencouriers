@@ -1,0 +1,16 @@
+<table>
+<thead>
+  % for fn in c.dg.fields:
+  <td>${fn[0]}</td>
+  % endfor
+</thead>
+<tbody>
+  % for row in c.dg.query_res:
+  <tr>
+    ## % for fn in c.dg.fields:
+    ## <td>${getattr(row,fn)}</td>
+    ## % endfor
+  </tr>
+  % endfor
+</tbody>
+</table>

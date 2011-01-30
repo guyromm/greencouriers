@@ -1,0 +1,3 @@
+include greencouriers/config/deployment.ini_tmpl
+recursive-include greencouriers/public *
+recursive-include greencouriers/templates *

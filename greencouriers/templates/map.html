@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/inner.html" />
+<%def name="title()">
+% if c.title:
+${c.title}
+% else:
+השליחים הירוקים
+% endif
+</%def>
+<%def name="main_content()">
+<div class='main-wide'>
+${self.activities_map()}
+
+</div>
+</%def>

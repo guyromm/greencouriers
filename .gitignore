@@ -1,0 +1,12 @@
+*.pyc
+*~
+.svn
+.ropeproject
+siteconf
+apacheconf
+prod.ini
+development.ini
+data/templates
+data/sessions
+GeoIP.dat
+pyfacebook
